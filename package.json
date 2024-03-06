@@ -2,7 +2,7 @@
   "name": "parcel-project-template",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://MartaTabor.github.io/goit-filmoteka-group6/",
+  "homepage": "https://MartaTabor.github.io/goit-filmoteka-group6",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-filmoteka-group6/"
