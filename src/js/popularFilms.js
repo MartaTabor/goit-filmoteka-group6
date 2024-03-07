@@ -1,4 +1,7 @@
-const filmList = document.querySelector(".film-list");
+import axios from 'axios';
+// const axios = require("axios");
+
+const filmList = document.querySelector('.film-list');
 
 let currentPage = 1;
 let itemsPerPage = 20;
@@ -6,23 +9,23 @@ let itemsPerPage = 20;
 const fetchData = async (page = 1) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN&per_page=${itemsPerPage}&page=${page}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN&per_page=${itemsPerPage}&page=${page}`,
     );
     const movies = response.data.results;
 
     // Pobieranie gatunków filmowych
     const genresResponse = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
     const genresMap = {};
-    genresResponse.data.genres.forEach((genre) => {
+    genresResponse.data.genres.forEach(genre => {
       genresMap[genre.id] = genre.name;
     });
 
     // Tworzenie markupu dla każdego filmu
-    const markupArray = movies.map((movie) => {
-      const genreNames = movie.genre_ids.map((genreId) => genresMap[genreId]);
-      const genresMarkup = genreNames.join(", ");
+    const markupArray = movies.map(movie => {
+      const genreNames = movie.genre_ids.map(genreId => genresMap[genreId]);
+      const genresMarkup = genreNames.join(', ');
       return `
         <li class="film-item">
           <img class="film-image" src="https://image.tmdb.org/t/p/original/${
@@ -39,9 +42,9 @@ const fetchData = async (page = 1) => {
     });
 
     // Wstawianie wygenerowanego markupu do elementu HTML
-    filmList.innerHTML = markupArray.join("");
+    filmList.innerHTML = markupArray.join('');
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error('Error fetching data:', error);
   }
 };
 
