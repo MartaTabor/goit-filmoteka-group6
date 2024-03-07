@@ -36,6 +36,7 @@ const fetchData = async (page = 1) => {
             <p class="film-info">
               <span class="film-type">${genresMarkup}</span> |
               <span class="film-year">${movie.release_date.slice(0, 4)}</span>
+              <span class="film-rating">${movie.vote_average.toFixed(1)}</span>
             </p>
           </div>
         </li>`;
