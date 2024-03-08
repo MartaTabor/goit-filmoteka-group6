@@ -27,7 +27,7 @@ const fetchData = async (page = 1) => {
       const genreNames = movie.genre_ids.map(genreId => genresMap[genreId]);
       const genresMarkup = genreNames.join(', ');
       return `
-        <li class="film-item">
+        <li class="film-item" data-modal-open>
           <img class="film-image" src="https://image.tmdb.org/t/p/original/${
             movie.poster_path
           }" alt="${movie.title}">
