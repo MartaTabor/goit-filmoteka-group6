@@ -1,0 +1,2 @@
+var r=globalThis,e={},n={},t=r.parcelRequired7c6;null==t&&((t=function(r){if(r in e)return e[r].exports;if(r in n){var t=n[r];delete n[r];var i={id:r,exports:{}};return e[r]=i,t.call(i.exports,i,i.exports),i.exports}var o=Error("Cannot find module '"+r+"'");throw o.code="MODULE_NOT_FOUND",o}).register=function(r,e){n[r]=e},r.parcelRequired7c6=t);var i=t.register;i("g1uI7",function(r,e){}),i("40lI0",function(r,e){}),i("bMpwc",function(r,e){}),i("7UJs8",function(r,e){}),t("g1uI7"),t("40lI0"),t("bMpwc"),t("7UJs8");
+//# sourceMappingURL=my-library.37ca0909.js.map
