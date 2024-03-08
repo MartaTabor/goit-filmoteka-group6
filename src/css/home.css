@@ -23,7 +23,8 @@
 }
 .film-item {
   width: 280px;
-  height: 443px;
+  min-height: 443px;
+  height: 100%;
   list-style-type: none;
   cursor: pointer;
   transition: 350ms;
@@ -73,7 +74,8 @@
   }
   .film-item {
     width: 336px;
-    height: 495px;
+    min-height: 495px;
+    height: 100%;
   }
   .film-image {
     height: 455px;
@@ -91,7 +93,8 @@
   }
   .film-item {
     width: 395px;
-    height: 634px;
+    min-height: 634px;
+    height: 100%;
   }
   .film-image {
     height: 574px;
@@ -101,6 +104,9 @@
     line-height: 24px;
   }
   .film-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
