@@ -23,3 +23,38 @@ document.getElementById('signup-form').addEventListener('submit', function (even
       console.error('Registration error', error);
     });
 });
+
+document.getElementById('login-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log('Login successful', userCredential);
+    })
+    .catch(error => {
+      console.error('Login error', error);
+    });
+});
+
+document.getElementById('logout-btn').addEventListener('click', function () {
+  auth
+    .signOut()
+    .then(() => {
+      console.log('User logged out');
+    })
+    .catch(error => {
+      console.error('Logout error', error);
+    });
+});
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log('User is logged in', user);
+    document.getElementById('logout-btn').style.display = 'block';
+  } else {
+    console.log('User is logged out');
+    document.getElementById('logout-btn').style.display = 'none';
+  }
+});
