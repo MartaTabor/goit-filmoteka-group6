@@ -9,3 +9,17 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+
+document.getElementById('signup-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log('Registration successful', userCredential);
+    })
+    .catch(error => {
+      console.error('Registration error', error);
+    });
+});
