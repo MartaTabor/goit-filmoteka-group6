@@ -10,6 +10,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+//rejestracja uzytkownika //
 document.getElementById('signup-form').addEventListener('submit', function (event) {
   event.preventDefault();
   const email = document.getElementById('signup-email').value;
@@ -24,6 +25,7 @@ document.getElementById('signup-form').addEventListener('submit', function (even
     });
 });
 
+//logowanie uzytkownika //
 document.getElementById('login-form').addEventListener('submit', function (event) {
   event.preventDefault();
   const email = document.getElementById('login-email').value;
@@ -38,6 +40,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
     });
 });
 
+// wylogowywanie uzytkownika //
 document.getElementById('logout-btn').addEventListener('click', function () {
   auth
     .signOut()
@@ -49,6 +52,7 @@ document.getElementById('logout-btn').addEventListener('click', function () {
     });
 });
 
+// status uzytkownika //
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('User is logged in', user);
