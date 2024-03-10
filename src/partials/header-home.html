@@ -1,3 +1,28 @@
-<h1>Header Home</h1>
-<a href="./index.html">Home</a>
-<a href="./partials/my-library.html">My Library</a>
+<header class="container header">
+  <div clsaa="headerSection">
+    <div class="navigation">
+    <a class="logo" id="logo"  href="./index.html">
+      <svg class="svgLogo" width="24" height="24">
+        <use href="./image/icons.svg#icon-logo"></use>
+      </svg>
+      <span class="textLogo">FILMOTEKA</span>
+    </a>
+    <ul class="navi">
+      <li><a href="./index.html" class="link">HOME</a></li>
+      <li><a href="./partials/my-library.html" class="link">MY LIBRARY</a></li>
+      <li><a href="#" class="link">
+        <svg class="svgLogo" width="20" height="20">
+          <use href="./image/icons.svg#icon-user"></use>
+        </svg>
+      </a></li>
+      </ul>
+    </div>
+    <form class="search-form" id="search-form">
+      <input type="text" name="searchQuery" autocomplete="off" placeholder="Search films..." />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div>
+    <p class="errorText hiddenVisibility">Search result not successful. Enter the correct movie name and try again.</p>
+  </div>
+</header>
