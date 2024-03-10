@@ -1,14 +1,18 @@
-var firebaseConfig = {
-  apiKey: 'TWÓJ_API_KEY',
-  authDomain: 'TWÓJ_PROJECT_ID.firebaseapp.com',
-  projectId: 'TWÓJ_PROJECT_ID',
-  storageBucket: 'TWÓJ_PROJECT_ID.appspot.com',
-  messagingSenderId: 'TWÓJ_MESSAGING_SENDER_ID',
-  appId: 'TWÓJ_APP_ID',
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyDrsw02tJfVOg5942KrmMQDgPqT2tORfaM',
+  authDomain: 'goit-filmoteka-group6.firebaseapp.com',
+  projectId: 'goit-filmoteka-group6',
+  storageBucket: 'goit-filmoteka-group6.appspot.com',
+  messagingSenderId: '259145174211',
+  appId: '1:259145174211:web:3abb6bd76e9ef12b746676',
+  measurementId: 'G-7R0DRVYQHE',
 };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 //rejestracja uzytkownika //
 document.getElementById('signup-form').addEventListener('submit', function (event) {
