@@ -1,7 +1,7 @@
 import axios from 'axios';
 // const axios = require("axios");
 
-const filmList = document.querySelector('.film-list');
+const filmList = document.querySelector('.home-film-list');
 
 let currentPage = 1;
 let itemsPerPage = 20;
@@ -27,16 +27,16 @@ const fetchData = async (page = 1) => {
       const genreNames = movie.genre_ids.map(genreId => genresMap[genreId]);
       const genresMarkup = genreNames.join(', ');
       return `
-        <li class="film-item" data-modal-open>
-          <img class="film-image" src="https://image.tmdb.org/t/p/original/${
+        <li class="home-film-item" data-modal-open>
+          <img class="home-film-image" src="https://image.tmdb.org/t/p/original/${
             movie.poster_path
           }" alt="${movie.title}">
-          <div class="film-details">
-            <h2 class="film-title">${movie.title}</h2>
-            <p class="film-info">
-              <span class="film-type">${genresMarkup}</span> |
-              <span class="film-year">${movie.release_date.slice(0, 4)}</span>
-              <span class="film-rating">${movie.vote_average.toFixed(1)}</span>
+          <div class="home-film-details">
+            <h2 class="home-film-title">${movie.title}</h2>
+            <p class="home-film-info">
+              <span class="home-film-type">${genresMarkup}</span> |
+              <span class="home-film-year">${movie.release_date.slice(0, 4)}</span>
+              <span class="home-film-rating">${movie.vote_average.toFixed(1)}</span>
             </p>
           </div>
         </li>`;
