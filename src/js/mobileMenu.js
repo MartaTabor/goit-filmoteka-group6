@@ -5,17 +5,22 @@ const mobileMenu = document.querySelector('.mobile-menu');
 
 const isVisible = () => {
   const innerWidth = window.innerWidth;
-  const innerHeight = window.innerHeight;
-  console.log(innerWidth);
-  console.log(innerHeight);
-  //
-  if (innerWidth > 768) {
+  const scrolled = window.scrollY;
+
+  console.log(scrolled);
+  console.log(`innerWidth: ${innerWidth} `);
+
+  if (innerWidth < 768 && scrolled >= 216) {
+    mobileMenu.style.display = 'flex';
+  } else {
     mobileMenu.style.display = 'none';
     navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
-  } else {
-    mobileMenu.style.display = 'flex';
   }
 };
+
+window.addEventListener('scroll', isVisible);
+window.addEventListener('resize', isVisible);
+
 isVisible();
 
 openBtn.addEventListener('click', () => {
@@ -25,5 +30,3 @@ openBtn.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
 });
-
-window.addEventListener('resize', isVisible);
