@@ -57,12 +57,12 @@ document.getElementById('logout-btn').addEventListener('click', function () {
 });
 
 // status uzytkownika //
-// firebase.auth().onAuthStateChanged(user => {
-//   if (user) {
-//     console.log('User is logged in', user);
-//     document.getElementById('logout-btn').style.display = 'block';
-//   } else {
-//     console.log('User is logged out');
-//     document.getElementById('logout-btn').style.display = 'none';
-//   }
-// });
+auth.onAuthStateChanged(user => {
+  if (user) {
+    console.log('User is logged in', user);
+    document.getElementById('logout-btn').style.display = 'block';
+  } else {
+    console.log('User is logged out');
+    document.getElementById('logout-btn').style.display = 'none';
+  }
+});
