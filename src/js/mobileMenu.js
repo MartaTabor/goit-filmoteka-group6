@@ -1,3 +1,7 @@
+const libraryNavSpan = document.querySelector('.plus-minus');
+const libraryNavList = document.querySelector('.library-list');
+const navLibrary = document.querySelector('.nav-library');
+
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
 const navElements = document.querySelectorAll('.mobile-nav');
@@ -15,6 +19,15 @@ const isVisible = () => {
   }
 };
 
+const isHidden = () => {
+  libraryNavList.classList.toggle('nav-hidden');
+  if (libraryNavList.classList.contains('nav-hidden')) {
+    libraryNavSpan.innerHTML = '<i class="fa-solid fa-plus"></i>';
+  } else {
+    libraryNavSpan.innerHTML = '<i class="fa-solid fa-minus"></i>';
+  }
+};
+
 window.addEventListener('scroll', isVisible);
 window.addEventListener('resize', isVisible);
 
@@ -26,4 +39,9 @@ openBtn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
   navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
+});
+
+navLibrary.addEventListener('click', e => {
+  e.preventDefault();
+  isHidden();
 });
