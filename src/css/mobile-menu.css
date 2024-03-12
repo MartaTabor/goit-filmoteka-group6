@@ -7,12 +7,10 @@
 .list li {
   margin: 25px 0;
 }
-mobile- .list li:first-child {
+.list li:first-child {
   margin-top: 50px;
 }
-.library-list li:first-child {
-  margin-top: 20px;
-}
+
 .list a {
   padding-left: 60px;
   color: black;
@@ -24,11 +22,21 @@ mobile- .list li:first-child {
 .library-list {
   margin-left: 40px;
   list-style: none;
+  transition: 300ms ease;
+}
+.nav-hidden {
+  display: none;
+}
+.library-list li:first-child {
+  margin-top: 20px;
 }
 .logo-text {
   padding: 60px 20px 0;
   font-size: 32px;
   font-weight: 500;
+}
+.fa-film {
+  color: var(--info-color);
 }
 .mobile-nav-btn {
   border: none;
@@ -42,6 +50,12 @@ mobile- .list li:first-child {
   top: 16px;
   left: 16px;
 }
+.plus-minus {
+  position: absolute;
+  left: 37px;
+  font-size: 26px;
+  font-weight: 400;
+}
 .mobile-nav {
   position: fixed;
   top: 0;
@@ -54,7 +68,7 @@ mobile- .list li:first-child {
   transform: translateX(0);
 }
 .mobile-nav-black {
-  background-color: #000;
+  background-color: black;
   width: 60%;
   max-width: 380px;
   min-width: 280px;
