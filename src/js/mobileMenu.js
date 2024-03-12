@@ -1,6 +1,7 @@
 const libraryNavSpan = document.querySelector('.plus-minus');
 const libraryNavList = document.querySelector('.library-list');
 const navLibrary = document.querySelector('.nav-library');
+const navBottomLi = document.querySelectorAll('.nav-bottom-li');
 
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
@@ -20,12 +21,20 @@ const isVisible = () => {
 };
 
 const isHidden = () => {
-  libraryNavList.classList.toggle('nav-hidden');
-  if (libraryNavList.classList.contains('nav-hidden')) {
-    libraryNavSpan.innerHTML = '<i class="fa-solid fa-plus"></i>';
-  } else {
-    libraryNavSpan.innerHTML = '<i class="fa-solid fa-minus"></i>';
-  }
+  const isNavHidden = libraryNavList.classList.toggle('nav-hidden');
+  libraryNavSpan.innerHTML = isNavHidden
+    ? '<i class="fa-solid fa-plus"></i>'
+    : '<i class="fa-solid fa-minus"></i>';
+
+  navBottomLi.forEach(function (navItem) {
+    if (isNavHidden) {
+      navItem.style.transition = 'transform 500ms ease';
+      navItem.style.transitionDelay = '0';
+      navItem.classList.remove('move-down');
+    } else {
+      navItem.classList.add('move-down');
+    }
+  });
 };
 
 window.addEventListener('scroll', isVisible);
