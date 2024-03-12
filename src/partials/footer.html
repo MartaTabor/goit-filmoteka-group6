@@ -1,1 +1,74 @@
-<h1>Footer</h1>
+<section class="footer_container">
+  <div class="footer_background">
+    <span class="textFooter">© 2020 | All Rights Reserved | Developed with </span>
+    <a class="logo" id="logo">
+      <svg class="svgLogo" width="14" height="12.88">
+        <use href="/src/image/icons.svg#heart_footer_svg"></use>
+      </svg>
+    </a>
+    <!-- Modal -->
+    <a id="myBtn" href="javascript:void(0);" onclick="openModal()">by GoIT Students</a>
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <div class="modal-content">
+        <ul class="student-list">
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+          <li>
+            <p>Name</p>
+            <img src="#" alt="Student" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    var modal = document.getElementById('myModal');
+
+    var closeButton = modal.querySelector('.close');
+
+    function openModal() {
+      modal.classList.add('show');
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+    }
+
+    closeButton.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+</section>
