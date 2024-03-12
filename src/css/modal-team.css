@@ -44,12 +44,12 @@
   font-weight: bold;
   cursor: pointer;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 1px;
+  right: 10px;
   width: 30px;
   height: 30px;
   line-height: 30px;
-  text-align: center;
+  text-align: right;
 }
 
 .close:hover,
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
- /*  Students list */
+/*  Students list */
 .student-list {
   list-style: none;
   padding: 0;
@@ -71,9 +71,7 @@
   margin-bottom: 20px;
   text-align: center;
   flex: 0 0 calc(50% - 40px);
-  max-width: calc(
-    50% - 40px
-  );
+  max-width: calc(50% - 40px);
 }
 
 .student-list img {

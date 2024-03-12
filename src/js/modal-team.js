@@ -3,6 +3,9 @@ var modal = document.getElementById('myModal');
 var closeButton = modal.querySelector('.close');
 const modalOpen = document.querySelector('#myBtn');
 
+let button = document.querySelector('#myBtn');
+button.addEventListener('click', openModal);
+
 function openModal() {
   modal.classList.add('show');
 }
