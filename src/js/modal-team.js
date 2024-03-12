@@ -1,10 +1,13 @@
 var modal = document.getElementById('myModal');
 
 var closeButton = modal.querySelector('.close');
+const modalOpen = document.querySelector('#myBtn');
 
 function openModal() {
   modal.classList.add('show');
 }
+
+modalOpen.addEventListener('click', openModal);
 
 function closeModal() {
   modal.classList.remove('show');
