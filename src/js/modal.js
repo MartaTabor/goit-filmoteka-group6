@@ -32,6 +32,17 @@ async function fetchFilmDetailsByIndex(index) {
     const filmDetails = await axios.get(
       `https://api.themoviedb.org/3/movie/${film.id}?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
+
+    const genresResponse = await axios.get(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
+    );
+    const genresList = {};
+    genresResponse.data.genres.forEach(genre => {
+      genresList[genre.id] = genre.name;
+    });
+    const genreNames = film.genre_ids.map(genreId => genresList[genreId]).slice(0, 2);
+    const genresMarkup = genreNames.join(', ');
+
     // Utworzenie zawartości modala na podstawie pobranych szczegółów filmu
     const modalWindow = document.querySelector('.film-details-modal-window');
     const modalContent = ` <a class="film-details-close" data-modal-close>
@@ -41,21 +52,29 @@ async function fetchFilmDetailsByIndex(index) {
                 <div class="modal-film-poster-div">
                     <img class="modal-film-poster" src="https://image.tmdb.org/t/p/original/${
                       filmDetails.data.poster_path
-                    }"/>
+                    }" />
                 </div>
                 <div class="modal-film-details-div">
                     <h4 class="film-title">${filmDetails.data.title}</h4>
                     <div class="modal-film-details">
+                      <div class="data">
                         <h5 class="types">Vote/Votes</h5>
                         <p class="avg">${filmDetails.data.vote_average.toFixed(1)}</p>
                         <span class="slash">/</span>
                         <p class="number">${filmDetails.data.vote_count}</p>
+                      </div>
+                      <div class="data">
                         <h5 class="types">Popularity</h5>
                         <p class="number">${filmDetails.data.popularity.toFixed(0)}</p>
+                      </div>
+                      <div class="data">
                         <h5 class="types">Original Title</h5>
                         <p class="number">${filmDetails.data.original_title}</p>
+                      </div>
+                      <div class="data">
                         <h5 class="types">Genre</h5>
-                        <p class="number">${filmDetails.data.genre_ids}</p>
+                        <p class="number">${genresMarkup}</p>
+                      </div>
                     </div>
                     <div class="film-overview">
                         <h5 class="about">About</h5>

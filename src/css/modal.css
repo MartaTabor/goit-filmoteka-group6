@@ -55,6 +55,14 @@ a {
     background: #ffffff;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .film-details-modal-window::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
   }
 
   .film-details-close {
@@ -107,9 +115,14 @@ a {
   .modal-film-details {
     width: 240px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     row-gap: 10px;
+  }
+
+  .data {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   }
 
   .types {
@@ -120,7 +133,7 @@ a {
     letter-spacing: 0em;
     text-align: left;
     color: #8c8c8c;
-    width: 120px;
+    width: 100px;
   }
 
   .avg {
@@ -135,6 +148,7 @@ a {
     border-radius: 5px;
     width: 36px;
     height: 16px;
+    padding: 2px 3px;
   }
 
   .slash {
@@ -154,7 +168,7 @@ a {
     font-weight: 500;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: center;
+    padding: 2px 3px;
   }
 
   /* .film-overview {
@@ -235,6 +249,7 @@ a {
   .film-details-modal-window {
     width: 704px;
     padding: 40px;
+    overflow-y: hidden;
   }
 
   .film-details-close {
@@ -259,7 +274,7 @@ a {
   }
 
   .modal-film-details {
-    width: 264px;
+    width: 300px;
   }
 
   .types {
@@ -288,8 +303,9 @@ a {
 
 @media (min-width: 1024px) {
   .film-details-modal-window {
-    width: 806px;
+    width: 760px;
     padding: 40px 30px;
+    overflow-y: hidden;
   }
 
   .film-details-modal {
@@ -305,12 +321,12 @@ a {
     justify-content: center;
     align-items: center;
     top: 6px;
-    left: 760px;
+    left: 720px;
   }
 
   .modal-film-poster {
-    height: 478px;
-    width: 375px;
+    height: 420px;
+    width: auto;
   }
 
   .film-title {
@@ -320,11 +336,11 @@ a {
   }
 
   .modal-film-details {
-    width: 260px;
+    width: 310px;
   }
 
   .types {
-    width: 133px;
+    width: 120px;
   }
 
   .film-desc {
@@ -334,9 +350,9 @@ a {
   .buttons {
     display: flex;
     flex-direction: row;
+    gap: 30px;
+    margin: 20px 0px;
     justify-content: left;
-    gap: 15px;
-    margin: 20px 0px 0px 10px;
   }
 
   .button-watched {
