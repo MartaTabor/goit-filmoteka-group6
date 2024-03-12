@@ -66,11 +66,12 @@ a {
     align-items: center;
     top: 10px;
     left: 235px;
+    fill: black;
   }
 
   .close-button {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
   }
 
   .modal-film-poster-div {
@@ -238,7 +239,7 @@ a {
 
   .film-details-close {
     top: 6px;
-    left: 650px;
+    left: 665px;
   }
 
   .film-details-modal {
@@ -266,7 +267,7 @@ a {
   }
 
   .film-desc {
-    width: 264px;
+    width: 280px;
   }
 
   .buttons {
@@ -288,7 +289,7 @@ a {
 @media (min-width: 1024px) {
   .film-details-modal-window {
     width: 806px;
-    padding: 40px 10px;
+    padding: 40px 30px;
   }
 
   .film-details-modal {
@@ -319,7 +320,7 @@ a {
   }
 
   .modal-film-details {
-    width: 266px;
+    width: 260px;
   }
 
   .types {
@@ -327,7 +328,7 @@ a {
   }
 
   .film-desc {
-    width: 391px;
+    width: 360px;
   }
 
   .buttons {
