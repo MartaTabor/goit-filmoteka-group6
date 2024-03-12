@@ -7,10 +7,11 @@
       </svg>
     </a>
     <!-- Modal -->
-    <a id="myBtn" href="javascript:void(0);" onclick="openModal()">by GoIT Studentss</a>
+    <a id="myBtn" href="javascript:void(0);">by GoIT Studentss</a>
     <div id="myModal" class="modal">
-      <span class="close">&times;</span>
       <div class="modal-content">
+      <span class="close">&times;</span>
+
         <ul class="student-list">
           <li>
             <p>Name</p>
@@ -45,30 +46,30 @@
     </div>
   </div>
   <script>
-    var modal = document.getElementById('myModal');
+    // var modal = document.getElementById('myModal');
 
-    var closeButton = modal.querySelector('.close');
+    // var closeButton = modal.querySelector('.close');
 
-    function openModal() {
-      modal.classList.add('show');
-    }
+    // function openModal() {
+    //   modal.classList.add('show');
+    // }
 
-    function closeModal() {
-      modal.classList.remove('show');
-    }
+    // function closeModal() {
+    //   modal.classList.remove('show');
+    // }
 
-    closeButton.addEventListener('click', closeModal);
+    // closeButton.addEventListener('click', closeModal);
 
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
+    // document.addEventListener('keydown', function (event) {
+    //   if (event.key === 'Escape') {
+    //     closeModal();
+    //   }
+    // });
 
-    window.addEventListener('click', function (event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    // window.addEventListener('click', function (event) {
+    //   if (event.target === modal) {
+    //     closeModal();
+    //   }
+    // });
   </script>
 </section>
