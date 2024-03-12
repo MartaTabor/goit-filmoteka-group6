@@ -8,29 +8,33 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const options = {
   method: 'GET',
   url: 'https://api.themoviedb.org/3/search/movie',
-  params: { include_adult: 'false', language: 'en-US', page: '1' },
+  params: {
+    include_adult: 'false',
+    language: 'en-US',
+    page: '1',
+  },
   headers: { accept: 'application/json' },
 };
 
-axios
-  .request(options)
-  .then(function (response) {
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
+// axios
+//   .request(options)
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
+//   .catch(function (error) {
+//     console.error(error);
+//   });
 // zapytanie o popularne filmy
-const getTrendingMovies = async (page = 1) => {
+export async function getTrendingMovies() {
   const searchParams = {
     params: {
       page: this.page,
-      api_key: FilmsApi.API_KEY,
+      api_key: filmsApi.API_KEY,
     },
   };
 
   return axios.get(`${FilmsApi.BASE_URL}trending/movie/week`, searchParams);
-};
+}
 try {
   const resp = await fetch(
     `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`,
