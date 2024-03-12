@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 //rejestracja uzytkownika //
 document.getElementById('signup-form').addEventListener('submit', function (event) {
@@ -57,7 +57,7 @@ document.getElementById('logout-btn').addEventListener('click', function () {
 });
 
 // status uzytkownika //
-firebase.auth().onAuthStateChanged(user => {
+auth.onAuthStateChanged(user => {
   if (user) {
     console.log('User is logged in', user);
     document.getElementById('logout-btn').style.display = 'block';
