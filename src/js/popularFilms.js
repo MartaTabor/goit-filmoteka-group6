@@ -2,6 +2,7 @@ import axios from 'axios';
 // const axios = require("axios");
 
 const filmList = document.querySelector('.home-film-list');
+const loader = document.querySelector('.loader-container');
 
 let currentPage = 1;
 let itemsPerPage = 20;
@@ -14,6 +15,7 @@ const fetchData = async (page = 1) => {
     let currentFilmIndex = 0;
     const movies = response.data.results;
     console.log(movies);
+    loader.classList.remove('visually-hidden');
     // Pobieranie gatunków filmowych
     const genresResponse = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
@@ -42,7 +44,7 @@ const fetchData = async (page = 1) => {
           </div>
         </li>`;
     });
-
+    loader.classList.add('visually-hidden');
     // Wstawianie wygenerowanego markupu do elementu HTML
     filmList.innerHTML = markupArray.join('');
   } catch (error) {
