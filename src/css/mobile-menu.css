@@ -33,6 +33,7 @@
 }
 .nav-hidden {
   opacity: 0;
+  transition-delay: 0s;
 }
 .nav-bottom-li.move-down {
   transform: translateY(0);
@@ -59,7 +60,7 @@
   left: 16px;
 }
 .plus-minus {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 400;
   position: absolute;
   left: 36px;
@@ -72,6 +73,7 @@
   height: 100%;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
+  transition-delay: 0s;
 }
 .mobile-nav.mobile-visible {
   transform: translateX(0);

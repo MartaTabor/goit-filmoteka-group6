@@ -26,10 +26,9 @@ const isHidden = () => {
     ? '<i class="fa-solid fa-plus"></i>'
     : '<i class="fa-solid fa-minus"></i>';
 
-  navBottomLi.forEach(function (navItem) {
+  navBottomLi.forEach(navItem => {
     if (isNavHidden) {
       navItem.style.transition = 'transform 500ms ease';
-      navItem.style.transitionDelay = '0';
       navItem.classList.remove('move-down');
     } else {
       navItem.classList.add('move-down');
