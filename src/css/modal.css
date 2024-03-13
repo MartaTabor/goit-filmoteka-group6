@@ -367,13 +367,12 @@ a {
   color: #ffffff;
   background-color: #ff6b08;
   border: 1px solid #ff6b08;
-
-  particle {
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-  }
+}
+particle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
 }
