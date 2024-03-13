@@ -1,23 +1,25 @@
 import axios from 'axios';
-
+import { locStorage } from './modalButtons.js'; // Import funkcji locStorage z pliku modalButtons.js
 let filmIndex = 0;
+let film = {};
+
+const addQueueRef = document.querySelector('.button-queue');
+const addWatchedRef = document.querySelector('.button-watched');
 // Nasłuchiwanie kliknięć na całym ciele dokumentu
 document.body.addEventListener('click', async function (event) {
   // Pobranie elementu modalu
   const modal = document.querySelector('[data-modal]');
-
   // Sprawdzenie, czy kliknięty element lub jego rodzic posiada atrybut [data-modal-open]
   if (event.target.closest('[data-modal-open]')) {
     // Pobranie indeksu filmu na podstawie klikniętego elementu
     filmIndex = event.target.closest('.home-film-item').dataset.index;
     console.log(`Index filmu: ${filmIndex}`);
     // Pobranie i wyświetlenie szczegółów filmu na podstawie indeksu
-    await fetchFilmDetailsByIndex(filmIndex);
+    await fetchFilmDetailsByIndex(filmIndex, film);
     // Usunięcie klasy ukrywającej modal, aby go wyświetlić
     modal.classList.remove('film-details-is-hidden');
   }
 });
-
 // Funkcja pobierająca i wyświetlająca szczegóły filmu na podstawie jego indeksu
 async function fetchFilmDetailsByIndex(index) {
   try {
@@ -32,7 +34,6 @@ async function fetchFilmDetailsByIndex(index) {
     const filmDetails = await axios.get(
       `https://api.themoviedb.org/3/movie/${film.id}?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
-
     const genresResponse = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
@@ -42,7 +43,6 @@ async function fetchFilmDetailsByIndex(index) {
     });
     const genreNames = film.genre_ids.map(genreId => genresList[genreId]).slice(0, 2);
     const genresMarkup = genreNames.join(', ');
-
     // Utworzenie zawartości modala na podstawie pobranych szczegółów filmu
     const modalWindow = document.querySelector('.film-details-modal-window');
     const modalContent = ` <a class="film-details-close" data-modal-close>
@@ -89,21 +89,19 @@ async function fetchFilmDetailsByIndex(index) {
         `;
     // Ustawienie zawartości modala na utworzony wcześniej markup
     modalWindow.innerHTML = modalContent;
-
     const modalClose = document.querySelector('.film-details-close');
     const modal = document.querySelector('[data-modal]');
-
     // Zamykanie okna kliknieciem
     modalClose.addEventListener('click', async () => {
       modal.classList.add('film-details-is-hidden');
     });
-
     // Zamykanie okna escape
     document.addEventListener('keyup', async event => {
       if (event.key === 'Escape') {
         modal.classList.add('film-details-is-hidden');
       }
     });
+    locStorage(film);
   } catch (error) {
     console.log('Error fetching film details:', error);
   }
