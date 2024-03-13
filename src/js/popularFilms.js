@@ -25,7 +25,6 @@ const fetchData = async (page = 1) => {
     // Tworzenie markupu dla każdego filmu
     const markupArray = movies.map(movie => {
       const genreNames = movie.genre_ids.map(genreId => genresMap[genreId]).slice(0, 2);
-      console.log(genreNames);
       const genresMarkup = genreNames.join(', ');
       return `
         <li class="home-film-item" data-modal-open>
