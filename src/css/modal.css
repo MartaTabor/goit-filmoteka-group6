@@ -238,10 +238,10 @@ a {
   .button-watched:hover,
   .button-watched:focus,
   .button-queue:hover,
-  .button-queue:focus {
-    background-color: #ff6b01;
-    border: 1px solid #ff6b01;
-    color: #ffffff;
+  .button-queue:focus,
+  .js-remove-from:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }
 }
 
@@ -363,6 +363,11 @@ a {
     width: 136px;
   }
 }
+.js-remove-from {
+  color: #ffffff;
+  background-color: #ff6b08;
+  border: 1px solid #ff6b08;
+  
 particle {
   position: fixed;
   left: 0;
