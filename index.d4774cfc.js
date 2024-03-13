@@ -9,5 +9,5 @@ var e=globalThis,a={},t={},i=e.parcelRequired7c6;null==i&&((i=function(e){if(e i
               <span class="home-film-rating">${e.vote_average.toFixed(1)}</span>
             </p>
           </div>
-        </li>`});r.innerHTML=n.join("")}catch(e){console.error("Error fetching data:",e)}})(),i("7UJs8"),i("2AKVI"),i("46SdE");
-//# sourceMappingURL=index.37ecf45c.js.map
+        </li>`});r.innerHTML=n.join("")}catch(e){console.error("Error fetching data:",e)}})(),i("7UJs8"),i("cB4zx"),i("2AKVI"),i("46SdE");
+//# sourceMappingURL=index.d4774cfc.js.map
