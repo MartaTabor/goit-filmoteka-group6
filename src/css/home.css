@@ -77,9 +77,7 @@
     min-height: 495px;
     height: 100%;
   }
-  .home-film-item:hover {
-    scale: 1.02;
-  }
+
   .home-film-image {
     height: 455px;
   }
@@ -91,13 +89,16 @@
   }
   .home-film-list {
     gap: 16px;
-    /* justify-content: flex-start;
-    padding-left: 31.5px; */
+    justify-content: flex-start;
+    padding-left: 31.5px;
   }
   .home-film-item {
     width: 395px;
     min-height: 634px;
     height: 100%;
+  }
+  .home-film-item:hover {
+    scale: 1.02;
   }
   .home-film-image {
     height: 574px;

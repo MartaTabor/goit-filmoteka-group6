@@ -12,7 +12,7 @@ const isVisible = () => {
   const innerWidth = window.innerWidth;
   const scrolled = window.scrollY;
 
-  if (innerWidth < 768 && scrolled >= 216) {
+  if (innerWidth < 1280 && scrolled >= 216) {
     mobileMenu.style.display = 'flex';
   } else {
     mobileMenu.style.display = 'none';
