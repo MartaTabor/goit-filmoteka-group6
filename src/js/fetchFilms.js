@@ -29,48 +29,48 @@ export async function getTrendingMovies() {
   const searchParams = {
     params: {
       page: this.page,
-      api_key: filmsApi.API_KEY,
+      api_key: API_KEY,
     },
   };
 
-  return axios.get(`${FilmsApi.BASE_URL}trending/movie/week`, searchParams);
+  return axios.get(`${BASE_URL}trending/movie/week`, searchParams);
 }
-try {
-  const resp = await fetch(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`,
-  );
+// try {
+//   const resp = await fetch(
+//     `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}`,
+//   );
 
-  if (!resp.ok) throw new Error(resp.status);
+//   if (!resp.ok) throw new Error(resp.status);
 
-  return await resp.json();
-} catch (err) {
-  console.error(err.message);
-}
+//   return await resp.json();
+// } catch (err) {
+//   console.error(err.message);
+// }
 // zapytanie o gatunki
 export async function getGenres() {
   const searchParams = {
     params: {
       page: this.page,
-      api_key: FilmsApi.API_KEY,
+      api_key: API_KEY,
     },
   };
 
-  return axios.get(`${FilmsApi.BASE_URL}genre/movie/list`, searchParams);
+  return axios.get(`${BASE_URL}genre/movie/list`, searchParams);
 }
-try {
-  const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
-  const respGenres = await response.json();
+// try {
+//   const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+//   const respGenres = await response.json();
 
-  return respGenres;
-} catch (error) {
-  console.log(error.message);
-}
+//   return respGenres;
+// } catch (error) {
+//   console.log(error.message);
+// }
 
 // zapytanie po id
 export async function fetchTrailer(id) {
   try {
     const responce = await fetch(
-      `${FilmsApi.BASE_URL}/movie/${id}/videos?api_key=${FilmsApi.API_KEY}`,
+      `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`,
     );
     const data = await responce.json();
 
@@ -85,10 +85,10 @@ export async function fetchFilmsByQuery() {
   const searchParams = {
     params: {
       page: this.page,
-      api_key: FilmsApi.API_KEY,
+      api_key: API_KEY,
       query: this.query,
     },
   };
 
-  return axios.get(`${FilmsApi.BASE_URL}search/movie`, searchParams);
+  return axios.get(`${BASE_URL}search/movie`, searchParams);
 }
