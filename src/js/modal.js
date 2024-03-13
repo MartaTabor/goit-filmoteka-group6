@@ -103,17 +103,7 @@ async function fetchFilmDetailsByIndex(index) {
         modal.classList.add('film-details-is-hidden');
       }
     });
-    // Zamykanie okna poprzez klikniecie poza modal
-    document.addEventListener('click', e => {
-      const modal = document.querySelector('[data-modal]');
-      const background = document.querySelector('.film-details-backdrop');
 
-      if (e.target === background) {
-        modal.classList.add('film-details-is-hidden');
-      }
-    });
-
-    // Dodawanie nasłuchiwania na kliknięcie na przyciski
     const modalButtons = document.querySelectorAll('.modal-buttons');
     modalButtons.forEach(button => {
       button.addEventListener('click', startParticleAnimation);
@@ -123,3 +113,13 @@ async function fetchFilmDetailsByIndex(index) {
     console.log('Error fetching film details:', error);
   }
 }
+
+// Zamykanie okna poprzez klikniecie poza modal
+document.addEventListener('click', e => {
+  const modal = document.querySelector('[data-modal]');
+  const background = document.querySelector('.film-details-backdrop');
+
+  if (e.target === background) {
+    modal.classList.add('film-details-is-hidden');
+  }
+});

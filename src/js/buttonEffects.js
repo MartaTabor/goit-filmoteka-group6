@@ -1,7 +1,7 @@
 export function startParticleAnimation(e) {
   // Szybka kontrola, czy użytkownik kliknął przycisk za pomocą klawiatury
   if (e.clientX === 0 && e.clientY === 0) {
-    const bbox = document.querySelector('#button').getBoundingClientRect();
+    const bbox = document.querySelectorAll('.modal-buttons').getBoundingClientRect();
     const x = bbox.left + bbox.width / 2;
     const y = bbox.top + bbox.height / 2;
     for (let i = 0; i < 60; i++) {
