@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { locStorage } from './modalButtons.js'; // Import funkcji locStorage z pliku modalButtons.js
+import { startParticleAnimation } from './buttonEffects.js';
+
 let filmIndex = 0;
 let film = {};
 
@@ -81,8 +83,8 @@ async function fetchFilmDetailsByIndex(index) {
                         <p class="film-desc">${filmDetails.data.overview}</p>
                     </div>
                     <div class="buttons">
-                        <button class="button-watched">add to Watched</button>
-                        <button class="button-queue">add to queue</button>
+                        <button class="button-watched modal-buttons">add to Watched</button>
+                        <button class="button-queue modal-buttons">add to queue</button>
                     </div>
                 </div>
             </div>
@@ -105,4 +107,20 @@ async function fetchFilmDetailsByIndex(index) {
   } catch (error) {
     console.log('Error fetching film details:', error);
   }
-}
+};
+// Zamykanie okna poprzez klikniecie poza modal
+    document.addEventListener('click', e => {
+      const modal = document.querySelector('[data-modal]');
+      const background = document.querySelector('.film-details-backdrop');
+
+      if (e.target === background) {
+        modal.classList.add('film-details-is-hidden');
+      }
+    });
+
+    // Dodawanie nasłuchiwania na kliknięcie na przyciski
+    const modalButtons = document.querySelectorAll('.modal-buttons');
+    modalButtons.forEach(button => {
+      button.addEventListener('click', startParticleAnimation);
+    });
+
