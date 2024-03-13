@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { startParticleAnimation } from './buttonEfects.js';
+import { startParticleAnimation } from './buttonEffects.js';
 
 let filmIndex = 0;
 // Nasłuchiwanie kliknięć na całym ciele dokumentu
