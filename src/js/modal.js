@@ -103,12 +103,7 @@ async function fetchFilmDetailsByIndex(index) {
         modal.classList.add('film-details-is-hidden');
       }
     });
-    locStorage(film);
-  } catch (error) {
-    console.log('Error fetching film details:', error);
-  }
-};
-// Zamykanie okna poprzez klikniecie poza modal
+    // Zamykanie okna poprzez klikniecie poza modal
     document.addEventListener('click', e => {
       const modal = document.querySelector('[data-modal]');
       const background = document.querySelector('.film-details-backdrop');
@@ -123,4 +118,8 @@ async function fetchFilmDetailsByIndex(index) {
     modalButtons.forEach(button => {
       button.addEventListener('click', startParticleAnimation);
     });
-
+    locStorage(film);
+  } catch (error) {
+    console.log('Error fetching film details:', error);
+  }
+}
