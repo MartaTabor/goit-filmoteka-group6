@@ -82,6 +82,10 @@ a {
     width: 30px;
   }
 
+  .close-button:hover {
+    cursor: pointer;
+  }
+
   .modal-film-poster-div {
     display: flex;
     flex-direction: column;
