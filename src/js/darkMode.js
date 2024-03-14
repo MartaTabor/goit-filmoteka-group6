@@ -3,7 +3,6 @@ const toggleIcon = document.getElementById('toggle-icon');
 const modalSec = document.querySelector('.film-details-modal-window');
 const footerModal = document.querySelector('.modal-content');
 const footerSec = document.querySelector('.footer_container');
-const modalBtns = document.querySelectorAll('.modal-buttons');
 const paginationBtns = document.querySelectorAll('.pagination-button');
 const paginationSvg = document.querySelectorAll('.pagination-svg');
 const mobileMenuA = document.querySelectorAll('.list li a');
@@ -12,8 +11,8 @@ const mobileNavBlack = document.querySelector('.mobile-nav-black');
 const modalCloseBtn = document.querySelectorAll('.close-button');
 const mobileCloseBtn = document.querySelector('.mobile-nav-close-btn');
 
-// Dark Mode Styles
-function darkMode() {
+// Style Dark Mode
+const darkMode = () => {
   toggleIcon.children[0].textContent = 'Dark Mode';
   toggleIcon.children[1].classList.replace('fa-sun', 'fa-moon');
   modalSec.style.backgroundColor = '#0e171e';
@@ -27,16 +26,13 @@ function darkMode() {
     link.style.color = '#fff';
   });
 
-  modalBtns.forEach(btn => {
-    btn.style.color = '#fff';
-  });
   paginationBtns.forEach(btn => {
     btn.style.color = '#fff';
   });
-}
+};
 
-// Light Mode Styles
-function lightMode() {
+// Style Light Mode
+const lightMode = () => {
   toggleIcon.children[0].textContent = 'Light Mode';
   toggleIcon.children[1].classList.replace('fa-moon', 'fa-sun');
   modalSec.style.backgroundColor = '#fff';
@@ -53,7 +49,7 @@ function lightMode() {
   paginationBtns.forEach(btn => {
     btn.style.color = '#000';
   });
-}
+};
 
 function switchTheme(event) {
   if (event.target.checked) {
