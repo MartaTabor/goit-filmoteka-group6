@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 .main-section {
-  padding-top: 20px;
+  padding-top: 60px;
   margin: 0 auto;
   width: 320px;
   font-family: 'Roboto', sans-serif;
@@ -68,6 +68,7 @@
 @media screen and (min-width: 768px) {
   .main-section {
     width: 768px;
+    padding-top: 75px;
   }
   .home-film-list {
     gap: 32px;
