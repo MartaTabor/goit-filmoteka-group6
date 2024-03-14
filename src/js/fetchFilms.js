@@ -1,4 +1,4 @@
-'use strict';
+
 // axios
 import axios from 'axios';
 import Notiflix from 'notiflix';
@@ -84,7 +84,7 @@ import Notiflix from 'notiflix';
 //     console.log(error.message);
 //   }
 // }
-searchForm = document.getElementById('search-form');
+const searchForm = document.querySelector('#search-form');
 // query
 export async function fetchFilmsByQuery() {
 const options = {
