@@ -1,7 +1,10 @@
+import { startParticleAnimation } from './buttonEffects.js';
+
 const libraryNavSpan = document.querySelector('.plus-minus');
 const libraryNavList = document.querySelector('.library-list');
 const navLibrary = document.querySelector('.nav-library');
 const navBottomLi = document.querySelectorAll('.nav-bottom-li');
+const navBtns = document.querySelectorAll('.list li a');
 
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
@@ -52,4 +55,18 @@ closeBtn.addEventListener('click', () => {
 navLibrary.addEventListener('click', e => {
   e.preventDefault();
   isHidden();
+});
+function handleButtonClick(e) {
+  // Pobierz współrzędne przycisku
+  const buttonRect = e.target.getBoundingClientRect();
+  const x = buttonRect.left + buttonRect.width / 2;
+  const y = buttonRect.top + buttonRect.height / 2;
+
+  // Wywołaj funkcję startParticleAnimation z odpowiednimi współrzędnymi
+  startParticleAnimation(e, x, y);
+}
+
+// Dodaj event listenery na kliknięcie dla każdego przycisku nawigacyjnego
+navBtns.forEach(btn => {
+  btn.addEventListener('click', handleButtonClick);
 });
