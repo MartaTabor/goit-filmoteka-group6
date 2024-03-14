@@ -87,11 +87,11 @@
   .main-section {
     width: 1280px;
   }
-  .home-film-list {
+  /* .home-film-list {
     gap: 16px;
     justify-content: flex-start;
     padding-left: 31.5px;
-  }
+  } */
   .home-film-item {
     width: 395px;
     min-height: 634px;
