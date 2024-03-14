@@ -3,5 +3,5 @@ var e=globalThis,t={},o={},r=e.parcelRequired7c6;null==r&&((r=function(e){if(e i
                 <h2>${r.title}</h2>
                 <p>${r.overview}</p>
             </div>
-        `);o.insertAdjacentHTML("beforeend",t)}}catch(e){console.error("Error rendering library:",e)}}async function l(e){try{return(await (0,n.default).get(`https://api.themoviedb.org//movie/${e}?api_key=5abbb3dbf9a78bf33887465dc33dbfa3&language=en-EN`)).data}catch(e){throw console.error("Error fetching movie details:",e),Error("Failed to fetch movie details")}}e.addEventListener("click",()=>{r("movies-watched")}),t.addEventListener("click",()=>{r("movies-queue")})}),r("g1uI7"),r("40lI0"),r("bMpwc"),r("7UJs8"),r("kBG4Y"),r("4boOf"),r("2AKVI"),r("46SdE");
-//# sourceMappingURL=my-library.507eb97a.js.map
+        `);o.insertAdjacentHTML("beforeend",t)}}catch(e){console.error("Error rendering library:",e)}}async function l(e){try{return(await (0,n.default).get(`https://api.themoviedb.org//movie/${e}?api_key=5abbb3dbf9a78bf33887465dc33dbfa3&language=en-EN`)).data}catch(e){throw console.error("Error fetching movie details:",e),Error("Failed to fetch movie details")}}e.addEventListener("click",()=>{r("movies-watched")}),t.addEventListener("click",()=>{r("movies-queue")})}),r("g1uI7"),r("40lI0"),r("bMpwc"),r("7UJs8"),r("kBG4Y"),r("4boOf"),r("hHD3f"),r("2AKVI"),r("46SdE");
+//# sourceMappingURL=my-library.dfdfec5e.js.map
