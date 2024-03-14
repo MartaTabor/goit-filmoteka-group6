@@ -7,6 +7,7 @@ import './modalButtons.js';
 import './modal-team.js';
 import './logWindow.js';
 import './mobileMenu.js';
+import './darkMode.js';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
