@@ -8,6 +8,7 @@ import './js/modalButtons.js';
 import './js/pagination.js';
 import './js/popularFilms.js';
 import './js/modal-team.js';
+import './js/darkMode.js';
 import './js/to-top.js';
 import './js/buttonEffects.js';
 

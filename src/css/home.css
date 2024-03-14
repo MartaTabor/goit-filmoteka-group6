@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 .main-section {
-  padding-top: 20px;
+  padding-top: 60px;
   margin: 0 auto;
   width: 320px;
   font-family: 'Roboto', sans-serif;
@@ -68,6 +68,7 @@
 @media screen and (min-width: 768px) {
   .main-section {
     width: 768px;
+    padding-top: 75px;
   }
   .home-film-list {
     gap: 32px;
@@ -77,9 +78,7 @@
     min-height: 495px;
     height: 100%;
   }
-  .home-film-item:hover {
-    scale: 1.02;
-  }
+
   .home-film-image {
     height: 455px;
   }
@@ -89,15 +88,18 @@
   .main-section {
     width: 1280px;
   }
-  .home-film-list {
+  /* .home-film-list {
     gap: 16px;
-    /* justify-content: flex-start;
-    padding-left: 31.5px; */
-  }
+    justify-content: flex-start;
+    padding-left: 31.5px;
+  } */
   .home-film-item {
     width: 395px;
     min-height: 634px;
     height: 100%;
+  }
+  .home-film-item:hover {
+    scale: 1.02;
   }
   .home-film-image {
     height: 574px;
@@ -127,7 +129,7 @@
 .pagination-button {
   width: 40px;
   height: 40px;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -141,6 +143,7 @@
   font-weight: normal;
   color: white;
 }
+.arrows:hover,
 .arrows:focus {
   background-color: var(--info-color);
 }
@@ -149,7 +152,7 @@
   fill: white;
 }
 
-/* .pagination-button:hover, */
+.pagination-button:hover,
 .pagination-button:focus {
   background-color: var(--info-color);
   color: #fff;
