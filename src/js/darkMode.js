@@ -16,6 +16,7 @@ const darkMode = () => {
   toggleIcon.children[0].textContent = 'Dark Mode';
   toggleIcon.children[1].classList.replace('fa-sun', 'fa-moon');
   modalSec.style.backgroundColor = '#0e171e';
+  modalSec.style.border = '1px solid #fff';
   footerSec.style.backgroundColor = '#0e171e';
   footerModal.style.backgroundColor = '#0e171e';
   mobileNavWhite.style.backgroundColor = '#0e171e';
