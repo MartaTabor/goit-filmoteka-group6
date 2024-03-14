@@ -109,6 +109,15 @@ async function fetchFilmDetailsByIndex(index) {
       button.addEventListener('click', startParticleAnimation);
     });
     locStorage(film);
+    const modalBtns = document.querySelectorAll('.modal-buttons');
+    let currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+      modalBtns.forEach(button => {
+        button.style.borderColor = '#fff';
+        button.style.color = '#fff';
+      });
+    }
   } catch (error) {
     console.log('Error fetching film details:', error);
   }
