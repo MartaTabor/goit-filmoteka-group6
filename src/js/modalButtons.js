@@ -40,16 +40,15 @@ export function locStorage(film) {
   // Listener "Add to Watched" "Add to Queue"
   addWatchedRef.addEventListener('click', onWatchedClick);
   addQueueRef.addEventListener('click', onQueueClick);
-  const filmInfos = `ID: ${film.id} TITLE: ${film.title}`;
   // Zmiana nazwy przycisku
   if (localStorage.length > 0) {
-    if (moviesWatched.find(item => item === filmInfos)) {
+    if (moviesWatched.find(item => item.id === film.id)) {
       addWatchedRef.classList.add('js-remove-from');
       addWatchedRef.textContent = 'remove from watched';
     }
   }
   if (localStorage.length > 0) {
-    if (moviesQueue.find(item => item === filmInfos)) {
+    if (moviesQueue.find(item => item.id === film.id)) {
       addQueueRef.classList.add('js-remove-from');
       addQueueRef.textContent = 'remove from queue';
     }
@@ -57,8 +56,8 @@ export function locStorage(film) {
   // Funkcja dodawania do localstorage 'Watched'
   function onWatchedClick() {
     console.log(film);
-    if (!moviesWatched.find(item => item === filmInfos)) {
-      moviesWatched.push(filmInfos);
+    if (!moviesWatched.find(item => item.id === film.id)) {
+      moviesWatched.push(film);
       localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
       const res = addWatchedRef.classList.toggle('js-remove-from');
       addWatchedRef.textContent = `${res ? 'remove from' : 'add to'} watched `;
@@ -66,7 +65,7 @@ export function locStorage(film) {
       addToWatched();
       return;
     }
-    let index = moviesWatched.findIndex(object => object === filmInfos);
+    let index = moviesWatched.findIndex(object => object.id === film.id);
     moviesWatched.splice(index, 1);
     localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
     const res = addWatchedRef.classList.toggle('js-remove-from');
@@ -75,8 +74,8 @@ export function locStorage(film) {
   }
   // Funkcja dodawania do lokalstorage 'Queue'
   function onQueueClick() {
-    if (!moviesQueue.find(item => item === filmInfos)) {
-      moviesQueue.push(filmInfos);
+    if (!moviesQueue.find(item => item.id === film.id)) {
+      moviesQueue.push(film);
       localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
       const res = addQueueRef.classList.toggle('js-remove-from');
       addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
@@ -84,7 +83,7 @@ export function locStorage(film) {
       addToQueue();
       return;
     }
-    let index = moviesQueue.findIndex(object => object === filmInfos);
+    let index = moviesQueue.findIndex(object => object.id === film.id);
     moviesQueue.splice(index, 1);
     localStorage.setItem('movies-queue', JSON.stringify(moviesQueue));
     const res = addQueueRef.classList.toggle('js-remove-from');
