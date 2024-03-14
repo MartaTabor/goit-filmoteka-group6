@@ -1,8 +1,15 @@
 const toggleSwitch = document.querySelector('input[type="checkbox"]');
 const toggleIcon = document.getElementById('toggle-icon');
 const modalSec = document.querySelector('.film-details-modal-window');
+const footerModal = document.querySelector('.modal-content');
 const footerSec = document.querySelector('.footer_container');
 const modalBtns = document.querySelectorAll('.modal-buttons');
+const paginationBtns = document.querySelectorAll('.pagination-button');
+const paginationSvg = document.querySelectorAll('.pagination-svg');
+const mobileMenuA = document.querySelectorAll('.list li a');
+const mobileNavWhite = document.querySelector('.mobile-nav-white');
+const mobileNavBlack = document.querySelector('.mobile-nav-black');
+const modalCloseBtn = document.querySelectorAll('.close-button');
 
 // Dark Mode Styles
 function darkMode() {
@@ -10,7 +17,18 @@ function darkMode() {
   toggleIcon.children[1].classList.replace('fa-sun', 'fa-moon');
   modalSec.style.backgroundColor = '#0e171e';
   footerSec.style.backgroundColor = '#0e171e';
+  footerModal.style.backgroundColor = '#0e171e';
+  mobileNavWhite.style.backgroundColor = '#0e171e';
+  mobileNavBlack.style.backgroundColor = '#fff';
+
+  mobileMenuA.forEach(link => {
+    link.style.color = '#fff';
+  });
+
   modalBtns.forEach(btn => {
+    btn.style.color = '#fff';
+  });
+  paginationBtns.forEach(btn => {
     btn.style.color = '#fff';
   });
 }
@@ -21,6 +39,17 @@ function lightMode() {
   toggleIcon.children[1].classList.replace('fa-moon', 'fa-sun');
   modalSec.style.backgroundColor = '#fff';
   footerSec.style.backgroundColor = '#fff';
+  footerModal.style.backgroundColor = '#fff';
+  mobileNavWhite.style.backgroundColor = '#fff';
+  mobileNavBlack.style.backgroundColor = '#0e171e';
+
+  mobileMenuA.forEach(link => {
+    link.style.color = '#0e171e';
+  });
+
+  paginationBtns.forEach(btn => {
+    btn.style.color = '#000';
+  });
 }
 
 function switchTheme(event) {
