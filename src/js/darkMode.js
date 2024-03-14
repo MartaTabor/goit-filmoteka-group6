@@ -10,6 +10,7 @@ const mobileMenuA = document.querySelectorAll('.list li a');
 const mobileNavWhite = document.querySelector('.mobile-nav-white');
 const mobileNavBlack = document.querySelector('.mobile-nav-black');
 const modalCloseBtn = document.querySelectorAll('.close-button');
+const mobileCloseBtn = document.querySelector('.mobile-nav-close-btn');
 
 // Dark Mode Styles
 function darkMode() {
@@ -20,6 +21,7 @@ function darkMode() {
   footerModal.style.backgroundColor = '#0e171e';
   mobileNavWhite.style.backgroundColor = '#0e171e';
   mobileNavBlack.style.backgroundColor = '#fff';
+  mobileCloseBtn.style.color = '#fff';
 
   mobileMenuA.forEach(link => {
     link.style.color = '#fff';
@@ -42,6 +44,7 @@ function lightMode() {
   footerModal.style.backgroundColor = '#fff';
   mobileNavWhite.style.backgroundColor = '#fff';
   mobileNavBlack.style.backgroundColor = '#0e171e';
+  mobileCloseBtn.style.color = '#000';
 
   mobileMenuA.forEach(link => {
     link.style.color = '#0e171e';
