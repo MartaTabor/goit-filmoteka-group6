@@ -1,96 +1,99 @@
+'use strict';
 
-// // Podpinamy się pod referencje
-// const btnWatched = document.getElementById('btnWatched');
-// const btnQueue = document.getElementById('btnQueue');
+// Import axios
+import axios from 'axios';
 
-// // Kontener na wyświetlenie wybranej biblioteki
-// const filmLibraryContainer = document.getElementById('filmLibraryContainer');
+// API key and base URL
+const API_KEY = '5abbb3dbf9a78bf33887465dc33dbfa3';
+const BASE_URL = 'https://api.themoviedb.org/';
 
-// // Tworzymy dwie tablice na localStorage
-// let watchedFilms = JSON.parse(localStorage.getItem('watchedFilms')) || [];
-// let queueFilms = JSON.parse(localStorage.getItem('queueFilms')) || [];
+// Pobranie danych z localStorage dla klucza 'movies-watched'
+const watchedMovies = JSON.parse(localStorage.getItem('movies-watched')) || [];
+console.log("Watched Movies:");
+console.log(watchedMovies);
 
-// // Funkcja dodawania filmów do odpowiedniej tablicy
-// function addFilmToLibrary(film, libraryKey) {
-//     const library = JSON.parse(localStorage.getItem(libraryKey)) || [];
-//     library.push(film);
-//     localStorage.setItem(libraryKey, JSON.stringify(library));
-// };
+// Wyodrębnienie ID filmów z danych zapisanych w localStorage
+const watchedMovieIds = watchedMovies.map(movie => {
+    const idMatch = movie.match(/ID: (\d+)/);
+    return idMatch ? idMatch[1] : null;
+}); 
 
-// // Renderujemy filmy
-// function renderFilm(library) {
-//     filmLibraryContainer.innerHTML = '';
+console.log("Watched Movie IDs:");
+console.log(watchedMovieIds);
 
-//     library.forEach(film => {
-//         const filmElement = document.createElement('div');
-//         filmElement.classList.add('film');
-//         filmElement.textContent = film.title;
-//         filmLibraryContainer.appendChild(filmElement);
-//     });
-// }
+// Pobranie danych z localStorage dla klucza 'movies-queue'
+const queueMovies = JSON.parse(localStorage.getItem('movies-queue')) || [];
+console.log("Queue Movies:");
+console.log(queueMovies);
 
-// btnWatched.addEventListener('click', () => {
-//     renderFilm(watchedFilms);
-// });
+// Wyodrębnienie ID filmów z danych zapisanych w localStorage
+const queueMovieIds = queueMovies.map(movie => {
+    const idMatch = movie.match(/ID: (\d+)/);
+    return idMatch ? idMatch[1] : null;
+}); 
 
-// btnQueue.addEventListener('click', () => {
-//     renderFilm(queueFilms);
-// });
+console.log("Queue Movie IDs:");
+console.log(queueMovieIds);
 
-// // Dodawanie przykładowego filmu
-// const exampleFilm = { title: 'test' };
-// addFilmToLibrary(exampleFilm, 'watchedFilms'); 
- 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const libraryContainer = document.querySelector('.gallery-library');
-    const btnWatched = document.getElementById('btnWatched');
-    const btnQueue = document.getElementById('btnQueue');
-
-    // Pobieranie danych z localStorage lub ustawianie domyślnych wartości
-    let watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
-    let queueMovies = JSON.parse(localStorage.getItem('queueMovies')) || [];
-
-    // Generuj markup
-    function generateFilmMarkup(movie) {
-        return `
-            <li class="home-film-item" data-id="${movie.id}">
-                <img class="home-film-image" src="${movie.poster_path}" alt="${movie.title}">
-                <div class="home-film-details">
-                    <h2 class="home-film-title">${movie.title}</h2>
-                    <p class="home-film-info">${movie.release_date.slice(0, 4)}</p>
-                </div>
-                <button class="remove-button">Usuń</button>
-            </li>`;
-    }
+// Nasłuchiwanie zdarzenia DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => { 
+    const buttonWatched = document.getElementById('btnWatched'); 
+    const buttonQueue = document.getElementById('btnQueue'); 
+    const galleryLibrary = document.querySelector('.gallery-library'); 
+    
+    // Dodanie nasłuchiwania kliknięcia na przycisk "Watched"
+    buttonWatched.addEventListener('click', () => { 
+        renderLibrary('movies-watched');
+    }); 
+     
+    // Dodanie nasłuchiwania kliknięcia na przycisk "Queue"
+    buttonQueue.addEventListener('click', () => { 
+        renderLibrary('movies-queue');
+    }); 
 
     // Funkcja renderująca bibliotekę filmów
-    function renderLibrary(data) {
-        libraryContainer.innerHTML = data.map(movie => generateFilmMarkup(movie)).join('');
+    async function renderLibrary(storageKey) { 
+        const libraryData = JSON.parse(localStorage.getItem(storageKey)) || [];
+        
+        // Sprawdzenie czy dane istnieją i czy nie są puste
+        if (!libraryData || libraryData.length === 0) { 
+            galleryLibrary.innerHTML = '<p>Brak filmów w bibliotece<p>'; 
+            return;
+        } 
+        
+       
+        try {
+            // Iteracja po ID filmów i pobranie ich szczegółów
+            for (const movieId of libraryData) {
+                const movieDetails = await fetchMovieDetails(movieId);
+                // Wygenerowanie markupu filmu i dodanie go do galerii
+                const movieMarkup = createMovieMarkup(movieDetails);
+                galleryLibrary.insertAdjacentHTML('beforeend', movieMarkup);
+            }
+        } catch (error) {
+            console.error('Error rendering library:', error);
+        }
     }
 
-    // Obsługa przycisku "WATCHED"
-    btnWatched.addEventListener('click', () => {
-        renderLibrary(watchedMovies);
-    });
-
-    // Obsługa przycisku "QUEUE"
-    btnQueue.addEventListener('click', () => {
-        renderLibrary(queueMovies);
-    });
-
-    // Obsługa kliknięcia przycisków usuwania filmu
-    libraryContainer.addEventListener('click', event => {
-        const target = event.target;
-        if (target.classList.contains('remove-button')) {
-            const movieId = target.closest('.home-film-item').dataset.id;
-            watchedMovies = watchedMovies.filter(movie => movie.id !== movieId);
-            queueMovies = queueMovies.filter(movie => movie.id !== movieId);
-            localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
-            localStorage.setItem('queueMovies', JSON.stringify(queueMovies));
-            renderLibrary(btnWatched.classList.contains('active') ? watchedMovies : queueMovies);
+    // Funkcja pobierająca szczegóły filmu z API
+    async function fetchMovieDetails(movieId) {
+        try {
+            // Wykonanie zapytania do API 
+            const response = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-EN`);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching movie details:', error);
+            throw new Error('Failed to fetch movie details');
         }
-    });
+    }
 
-    renderLibrary(watchedMovies);
+    // Funkcja tworząca markup filmu
+    function createMovieMarkup(movieDetails) {
+        return `
+            <div class="movie">
+                <h2>${movieDetails.title}</h2>
+                <p>${movieDetails.overview}</p>
+            </div>
+        `;
+    }
 });
