@@ -19,9 +19,13 @@ function renderLibrary(libraryData) {
 
     // Sprawdzenie czy dane istnieją i czy nie są puste
     if (!libraryData || libraryData.length === 0) { 
-        galleryLibrary.innerHTML = '<p>Brak filmów w bibliotece<p>'; 
-        return;
-    } 
+      galleryLibrary.innerHTML = `
+          <div class="empty-library">
+              <p>Brak filmów w bibliotece</p>
+              <div class="lCatson"></div>
+          </div>`;
+      return;
+  }
 
     // Iteracja po filmach z localStorage
     libraryData.forEach(movie => {
@@ -34,16 +38,15 @@ function renderLibrary(libraryData) {
 // Funkcja tworząca markup filmu
 function createMovieMarkup(movie) {
     return ` 
-    
-        <li class="home-film-item" data-modal-open>
-          <img class="home-film-image" src="https://image.tmdb.org/t/p/original/${
+        <li class="library-film-item" data-modal-open>
+          <img class="library-film-image" src="https://image.tmdb.org/t/p/original/${
             movie.backdrop_path
           }" alt="${movie.title}">
-          <div class="home-film-details">
-            <h2 class="home-film-title">${movie.title}</h2>
-            <p class="home-film-info">
-              <span class="home-film-year">${movie.release_date.slice(0, 4)}</span>
-              <span class="home-film-rating">${movie.vote_average.toFixed(1)}</span>
+          <div class="library-film-details">
+            <h2 class="library-film-title">${movie.title}</h2>
+            <p class="library-film-info">
+              <span class="library-film-year">${movie.release_date.slice(0, 4)}</span>
+              <span class="library-film-rating">${movie.vote_average.toFixed(1)}</span>
             </p>
           </div>
         </li>`;
@@ -64,3 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
         renderLibrary(queueMovies);
     }); 
 });
+ 
