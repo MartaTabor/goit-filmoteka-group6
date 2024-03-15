@@ -80,6 +80,21 @@
   height: auto;
 }
 
+.student {
+  display: flex;
+  align-items: center;
+}
+
+.student-image {
+  margin-right: 20px;
+}
+
+.team-member,
+.team-member-function {
+  margin: 0;
+  text-align: left;
+}
+
 .team-member {
   color: black;
   font-size: 20px;
@@ -98,10 +113,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .to-top {
-    display: none;
-  }
-
   .student-list li {
     margin-right: 0;
     margin-bottom: 20px;
@@ -109,5 +120,13 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
-}
 
+  .student-image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .student-info {
+    text-align: center;
+  }
+}
