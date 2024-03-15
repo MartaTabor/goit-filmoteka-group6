@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { showFilms } from './fetchFilms';
+import { showFilms } from './fetchFilms.js';
 // const axios = require("axios");
 
 const filmList = document.querySelector('.home-film-list');
