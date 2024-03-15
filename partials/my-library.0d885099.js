@@ -12,5 +12,5 @@ var e=globalThis,t={},l={},r=e.parcelRequired7c6;null==r&&((r=function(e){if(e i
               <span class="library-film-rating">${e.vote_average.toFixed(1)}</span>
             </p>
           </div>
-        </li>`;t.insertAdjacentHTML("beforeend",l)})}console.log("Queue Movies:"),console.log(a),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("btnWatched"),t=document.getElementById("btnQueue");e.addEventListener("click",()=>{o(i)}),t.addEventListener("click",()=>{o(a)})}),r("g1uI7"),r("40lI0"),r("bMpwc"),r("7UJs8"),r("kBG4Y"),r("4boOf"),r("hHD3f"),r("2AKVI"),r("46SdE");
-//# sourceMappingURL=my-library.e7766c42.js.map
+        </li>`;t.insertAdjacentHTML("beforeend",l)})}console.log("Queue Movies:"),console.log(a),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("btnWatched"),t=document.getElementById("btnQueue");e.addEventListener("click",()=>{o(i)}),t.addEventListener("click",()=>{o(a)}),o(i)}),r("g1uI7"),r("40lI0"),r("bMpwc"),r("7UJs8"),r("kBG4Y"),r("4boOf"),r("hHD3f"),r("2AKVI"),r("46SdE");
+//# sourceMappingURL=my-library.0d885099.js.map
