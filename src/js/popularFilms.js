@@ -20,7 +20,7 @@ const fetchData = async (page = 1) => {
     const genresResponse = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
-    const genresMap = {}; oraz 
+    const genresMap = {};
     genresResponse.data.genres.forEach(genre => {
       genresMap[genre.id] = genre.name;
     });
