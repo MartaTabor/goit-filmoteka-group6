@@ -11,6 +11,7 @@ import './js/modal-team.js';
 import './js/darkMode.js';
 import './js/to-top.js';
 import './js/buttonEffects.js';
+import './js/showFilms.js';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
