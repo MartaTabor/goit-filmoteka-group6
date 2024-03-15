@@ -52,6 +52,12 @@ function createMovieMarkup(movie) {
         </li>`;
 }
 
+// Funkcja wywołująca renderowanie biblioteki filmów po załadowaniu strony
+function loadLibraryOnPageLoad() {
+    // Wywołanie funkcji renderLibrary z danymi o filmach do obejrzenia
+    renderLibrary(watchedMovies);
+}
+
 // Nasłuchiwanie zdarzenia DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => { 
     const buttonWatched = document.getElementById('btnWatched'); 
@@ -66,5 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonQueue.addEventListener('click', () => { 
         renderLibrary(queueMovies);
     }); 
+
+    // Wywołanie funkcji renderującej bibliotekę filmów po załadowaniu strony
+    loadLibraryOnPageLoad();
 });
  
