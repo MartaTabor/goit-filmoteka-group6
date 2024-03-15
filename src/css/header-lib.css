@@ -41,16 +41,23 @@
     transition: border-color .25s cubic-bezier(.4, 0, .2, 1), background-color .25s cubic-bezier(.4, 0, .2, 1);
 }
 
-.ulBtns button:focus,
+/* .ulBtns button:focus, */
 .ulBtns button:hover{
     background-color: var(--color-orange, orange);
     border-color: var(--color-orange, orange);
-}
+} 
+ 
+.ulBtns .isActive{
+    background-color: var(--color-orange, orange);
+    border-color: var(--color-orange, orange);
+} 
 
 .buttonActive{
     background-color: var(--color-orange, orange);
     border-color: var(--color-orange, orange);
-}
+} 
+
+
 
 @media screen and (min-width: 768px) {
 
