@@ -82,45 +82,45 @@
 
 // Pobranie danych z localStorage dla klucza 'movies-watched'
 const watchedMovies = JSON.parse(localStorage.getItem('movies-watched')) || [];
-console.log("Watched Movies:");
+console.log('Watched Movies:');
 console.log(watchedMovies);
 
 // Pobranie danych z localStorage dla klucza 'movies-queue'
 const queueMovies = JSON.parse(localStorage.getItem('movies-queue')) || [];
-console.log("Queue Movies:");
+console.log('Queue Movies:');
 console.log(queueMovies);
 
 // Funkcja renderująca bibliotekę filmów
 function renderLibrary(libraryData) {
-    const galleryLibrary = document.querySelector('.gallery-library');
-    
-    // Wyczyszczenie zawartości galerii przed dodaniem nowych elementów
-    galleryLibrary.innerHTML = '';
+  const galleryLibrary = document.querySelector('.gallery-library');
 
-    // Sprawdzenie czy dane istnieją i czy nie są puste
-    if (!libraryData || libraryData.length === 0) { 
-      galleryLibrary.innerHTML = `
+  // Wyczyszczenie zawartości galerii przed dodaniem nowych elementów
+  galleryLibrary.innerHTML = '';
+
+  // Sprawdzenie czy dane istnieją i czy nie są puste
+  if (!libraryData || libraryData.length === 0) {
+    galleryLibrary.innerHTML = `
           <div class="empty-library">
               <p>Brak filmów w bibliotece</p>
               <div class="lCatson"></div>
           </div>`;
-      return;
+    return;
   }
 
-    // Iteracja po filmach z localStorage
-    libraryData.forEach(movie => {
-        // Wygenerowanie markupu filmu i dodanie go do galerii
-        const movieMarkup = createMovieMarkup(movie);
-        galleryLibrary.insertAdjacentHTML('beforeend', movieMarkup);
-    });
+  // Iteracja po filmach z localStorage
+  libraryData.forEach(movie => {
+    // Wygenerowanie markupu filmu i dodanie go do galerii
+    const movieMarkup = createMovieMarkup(movie);
+    galleryLibrary.insertAdjacentHTML('beforeend', movieMarkup);
+  });
 }
 
 // Funkcja tworząca markup filmu
 function createMovieMarkup(movie) {
-    return ` 
+  return `
         <li class="library-film-item" data-modal-open>
           <img class="library-film-image" src="https://image.tmdb.org/t/p/original/${
-            movie.backdrop_path
+            movie.poster_path
           }" alt="${movie.title}">
           <div class="library-film-details">
             <h2 class="library-film-title">${movie.title}</h2>
@@ -134,6 +134,7 @@ function createMovieMarkup(movie) {
 
 // Funkcja wywołująca renderowanie biblioteki filmów po załadowaniu strony
 function loadLibraryOnPageLoad() {
+
     // Wywołanie funkcji renderLibrary z danymi o filmach do obejrzenia
     renderLibrary(watchedMovies);
 
