@@ -80,6 +80,11 @@
     width: 280px; 
     height: 280px; 
     margin-top: 10px;
+ } 
+  
+ .library-film-item:hover{          
+  scale: 1.02; 
+  transition: 350ms;
  }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
