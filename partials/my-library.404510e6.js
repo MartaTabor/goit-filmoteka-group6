@@ -2,9 +2,9 @@ var e=globalThis,t={},l={},r=e.parcelRequired7c6;null==r&&((r=function(e){if(e i
           <div class="empty-library">
               <p>Brak film\xf3w w bibliotece</p>
               <div class="lCatson"></div>
-          </div>`;return}e.forEach(e=>{let l=` 
+          </div>`;return}e.forEach(e=>{let l=`
         <li class="library-film-item" data-modal-open>
-          <img class="library-film-image" src="https://image.tmdb.org/t/p/original/${e.backdrop_path}" alt="${e.title}">
+          <img class="library-film-image" src="https://image.tmdb.org/t/p/original/${e.poster_path}" alt="${e.title}">
           <div class="library-film-details">
             <h2 class="library-film-title">${e.title}</h2>
             <p class="library-film-info">
@@ -13,4 +13,4 @@ var e=globalThis,t={},l={},r=e.parcelRequired7c6;null==r&&((r=function(e){if(e i
             </p>
           </div>
         </li>`;t.insertAdjacentHTML("beforeend",l)})}console.log("Queue Movies:"),console.log(a),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("btnWatched"),t=document.getElementById("btnQueue");e.addEventListener("click",()=>{o(i)}),t.addEventListener("click",()=>{o(a)}),o(i)}),r("g1uI7"),r("40lI0"),r("bMpwc"),r("7UJs8"),r("kBG4Y"),r("4boOf"),r("hHD3f"),r("2AKVI"),r("46SdE");
-//# sourceMappingURL=my-library.0d885099.js.map
+//# sourceMappingURL=my-library.404510e6.js.map
