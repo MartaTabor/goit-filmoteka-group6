@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-import { showFilms } from "./showFilms";
+// import { showFilms } from "./showFilms";
 
 export async function getGenres() {
     return axios.get(
