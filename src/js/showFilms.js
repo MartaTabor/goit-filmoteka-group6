@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // import { showFilms } from "./showFilms";
 
-export async function getGenres() {
+async function getGenres() {
     return axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
     );
