@@ -68,6 +68,7 @@ function createPaginationButtons(currPage) {
     button.textContent = text;
     button.addEventListener('click', () => {
       pageCall(page);
+      window.scrollTo(0, 0);
     });
     return button;
   }
@@ -90,12 +91,14 @@ function createPaginationButtons(currPage) {
 next.addEventListener('click', () => {
   if (currPage < totalPages) {
     pageCall(currPage + 1);
+    window.scrollTo(0, 0);
   }
 });
 
 prev.addEventListener('click', () => {
   if (currPage > 1) {
     pageCall(currPage - 1);
+    window.scrollTo(0, 0);
   }
 });
 
