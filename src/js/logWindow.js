@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  nAuthStateChanged,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 const firebaseConfig = {
