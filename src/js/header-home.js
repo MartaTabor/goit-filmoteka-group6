@@ -76,7 +76,7 @@ onAuthStateChanged(auth, user => {
 var modal = document.getElementById('userModal');
 
 // Get the button that opens the modal
-var btn = document.querySelector('.user-icon');
+var btn = document.querySelector('.icon-user');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName('close')[0];
