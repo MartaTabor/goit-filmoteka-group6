@@ -15,7 +15,7 @@ body {
   margin: -20px 0 50px;
 }
 
-h1 {
+.h1-log-window {
   font-weight: bold;
   margin: 0;
 }
@@ -24,7 +24,7 @@ h2 {
   text-align: center;
 }
 
-p {
+.p-log-window {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
@@ -32,11 +32,11 @@ p {
   margin: 20px 0 30px;
 }
 
-span {
+.span-log-window {
   font-size: 12px;
 }
 
-a {
+.a-social {
   color: #333;
   font-size: 14px;
   text-decoration: none;
@@ -88,7 +88,7 @@ input {
   width: 100%;
 }
 
-.container {
+.container-log-window {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
