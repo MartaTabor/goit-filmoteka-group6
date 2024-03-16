@@ -32,7 +32,7 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 50%;
+  width: 800px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -67,16 +67,14 @@
 }
 
 .student-list li {
-  margin-right: 20px;
-  margin-bottom: 20px;
-  text-align: center;
   flex: 0 0 calc(50% - 40px);
   max-width: calc(50% - 40px);
+  padding: 10px;
 }
 
 .student-list img {
   width: 100%;
-  max-width: 100%;
+  max-width: 100px;
   height: auto;
 }
 
@@ -129,4 +127,8 @@
   .student-info {
     text-align: center;
   }
+
+  .modal-content {
+    width: 50%;
+}
 }
