@@ -10,8 +10,9 @@
 }
 
 .pagination-button {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
   background-color: transparent;
   border: none;
   border-radius: 5px;
@@ -25,12 +26,22 @@
 }
 
 .pagination-span {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
   border: none;
   border-radius: 5px;
   font-weight: 600;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  line-height: 34px;
+  cursor: auto;
+  font-size: 13px;
+  text-align: center;
+  line-height: 25px;
 }
 
 .arrows {
@@ -74,29 +85,21 @@
   .pagination-container {
     margin: 60px 0;
   }
-  .dots {
-    display: flex;
-    justify-content: center;
-    line-height: 34px;
-    cursor: auto;
-  }
-}
 
-@media screen and (min-width: 320px) {
   .pagination-button {
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
+    width: 40px;
+    height: 40px;
+    font-size: 100%;
   }
 
   .pagination-span {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 
   .dots {
-    font-size: 13px;
+    font-size: 100%;
     text-align: center;
-    line-height: 25px;
+    line-height: 34px;
   }
 }
