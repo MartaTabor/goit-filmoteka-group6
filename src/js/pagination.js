@@ -7,6 +7,7 @@ const pagination = document.getElementById('pagination');
 
 let currPage = 1;
 let totalPages = 500;
+let query = '';
 
 const fetchDataCallback = async page => {
   await fetchData(page);
@@ -14,6 +15,8 @@ const fetchDataCallback = async page => {
 
 const fetchFilmsByQueryCallback = async (query, page) => {
   await fetchFilmsByQuery(query, page);
+  currPage = page;
+  createPaginationButtons(currPage, totalPages);
 };
 
 // Funkcja tworząca przyciski paginacji
@@ -78,57 +81,55 @@ export function createPaginationButtons(currPage, totalPages) {
     return button;
   }
 
-  //   //Usun disabled do prev, jesli aktualna strona nie jest pierwsza
-  //   if (currPage > 1) {
-  //     prev.classList.remove('disabled');
-  //   } else {
-  //     prev.classList.add('disabled');
-  //   }
-
-  //   //Dodaj disabled do next, jesli aktualna strona jest ostatnia
-  //   if (currPage === totalPages) {
-  //     next.classList.add('disabled');
-  //   } else {
-  //     next.classList.remove('disabled');
-  //   }
-
-  //   if (typeof pageCallback === 'function') {
-  //     pageCallback(currPage, totalPages);
-  //   }
-  // }
-
-  // Funkcja dla buttona i pobierania danych
-  function handleButtonClick(page) {
-    currPage = page;
-    fetchDataCallback(page);
-    window.scrollTo(0, 0);
+  //Usun disabled do prev, jesli aktualna strona nie jest pierwsza
+  if (currPage > 1) {
+    prev.classList.remove('disabled');
+  } else {
+    prev.classList.add('disabled');
   }
 
-  // Listenery na next i prev buttons
-  next.addEventListener('click', () => {
-    if (currPage < totalPages) {
-      handleButtonClick(currPage + 1);
-      window.scrollTo(0, 0);
-    }
-  });
+  //Dodaj disabled do next, jesli aktualna strona jest ostatnia
+  if (currPage === totalPages) {
+    next.classList.add('disabled');
+  } else {
+    next.classList.remove('disabled');
+  }
+}
 
-  prev.addEventListener('click', () => {
-    if (currPage > 1) {
-      handleButtonClick(currPage - 1);
-      window.scrollTo(0, 0);
-    }
-  });
+// Listenery na next i prev buttons
+next.addEventListener('click', () => {
+  if (currPage < totalPages) {
+    handleButtonClick(currPage + 1);
+    window.scrollTo(0, 0);
+  }
+});
 
-  // // Funkcja wywołująca pobieranie danych dla wybranej strony
-  // async function pageCall(page) {
-  //   currPage = page;
-  //   fetchData(page, pageCallback);
-  // }
+prev.addEventListener('click', () => {
+  if (currPage > 1) {
+    handleButtonClick(currPage - 1);
+    window.scrollTo(0, 0);
+  }
+});
 
-  // // Funkcja wywoływana po pobraniu danych, aktualizująca paginację
-  // function pageCallback(page, totalPages) {
-  //   createPaginationButtons(page, totalPages);
-  // }
+//Funkcja do zmiany query
+function handleQueryChange(newQuery) {
+  query = newQuery;
+  currPage = 1;
+  if (query) {
+    fetchFilmsByQueryCallback(query, currPage);
+  } else {
+    fetchDataCallback(currPage);
+  }
+}
+
+// Funkcja dla buttona i pobierania danych
+function handleButtonClick(page) {
+  currPage = page;
+  if (query) {
+    fetchFilmsByQueryCallback(query, page);
+  } else {
+    fetchDataCallback(page);
+  }
+  window.scrollTo(0, 0);
 }
 fetchDataCallback(currPage);
-fetchFilmsByQueryCallback(currPage);
