@@ -1,11 +1,6 @@
 // axios
 import axios from 'axios';
-import Notiflix from 'notiflix';
 
-import { showFilms } from './showFilms';
-
-const searchForm = document.querySelector('#search-form');
-const errorText = document.querySelector('.errorText');
 
 //Pobieranie gatunków
 export async function getGenres() {
@@ -13,7 +8,6 @@ export async function getGenres() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
   );
 }
-
 //Pobieranie listy filmów z szukaną frazą
 export async function fetchFilmsByQuery(qwery, page) {
   const options = {
@@ -51,21 +45,3 @@ export async function fetchFilmsById(idFilm) {
   return res;
 }
 
-searchForm.addEventListener('submit', evt => {
-  evt.preventDefault();
-  if (searchForm.elements.searchQuery.value.trim() == '') {
-    Notiflix.Notify.warning('Enter some text...');
-  } else {
-    fetchFilmsByQuery(searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`), 1)
-      .then(res => {
-        if (res.data.total_results == 0) {
-          errorText.classList.remove('hiddenVisibility');
-        } else {
-          errorText.classList.add('hiddenVisibility');
-          Notiflix.Notify.success(`Znaeziono: ${res.data.total_results}`);
-          showFilms(res);
-        }
-      })
-      .catch(error => {});
-  }
-});
