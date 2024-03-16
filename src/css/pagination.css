@@ -19,6 +19,11 @@
   font-weight: 600;
 }
 
+.pagination-button.active {
+  background-color: var(--info-color);
+  color: #fff;
+}
+
 .pagination-span {
   width: 40px;
   height: 40px;
@@ -64,10 +69,7 @@
   background-color: var(--info-color);
   color: #fff;
 }
-.dots,
-.hidden {
-  display: none;
-}
+
 @media screen and (min-width: 768px) {
   .pagination-container {
     margin: 60px 0;
@@ -77,12 +79,5 @@
     justify-content: center;
     line-height: 34px;
     cursor: auto;
-  }
-  .dots:focus {
-    background-color: transparent;
-    color: black;
-  }
-  .hidden {
-    display: block;
   }
 }
