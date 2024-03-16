@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import { showFilms } from './showFilms';
+import { fetchFilmsByQuery } from "./fetchFilms.js"
 
 const searchForm = document.querySelector('#search-form');
 const errorText = document.querySelector('.errorText');
