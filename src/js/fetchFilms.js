@@ -1,6 +1,6 @@
 // axios
 import axios from 'axios';
-
+import { createPaginationButtons } from './pagination';
 
 //Pobieranie gatunków
 export async function getGenres() {
@@ -9,24 +9,28 @@ export async function getGenres() {
   );
 }
 //Pobieranie listy filmów z szukaną frazą
-export async function fetchFilmsByQuery(qwery, page) {
-  const options = {
-    method: 'GET',
-    url: 'https://api.themoviedb.org/3/search/movie',
-    params: {
-      query: `${qwery}`,
-      include_adult: 'false',
-      language: 'en-US',
-      page: `${page}`,
-    },
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjRiYzVmYTA0ZTcwZWUwNmI1YmZjZmZkZDAwMjhmZiIsInN1YiI6IjY1ZjFiYzIwZDY0YWMyMDBjYTVkMWU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kSA66Srxuh9huCM-91QWv-1PAFYBxqjt-fFzzJb4bmg',
-    },
-  };
-  const res = await axios.request(options);
-  return res;
+export async function fetchFilmsByQuery(query, page) {
+  try {
+    const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
+      params: {
+        query: query,
+        include_adult: 'false',
+        language: 'en-US',
+        page: page,
+      },
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer your_access_token_here',
+      },
+    });
+
+    const data = response.data;
+    const totalPages = data.total_pages;
+
+    createPaginationButtons(page, totalPages, page => fetchFilmsByQuery(query, page));
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 }
 
 //pobieranie danych na temat filmu o konkretnym ID
@@ -44,4 +48,3 @@ export async function fetchFilmsById(idFilm) {
   const res = await axios.request(options);
   return res;
 }
-
