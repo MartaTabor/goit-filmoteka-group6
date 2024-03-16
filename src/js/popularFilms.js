@@ -1,27 +1,25 @@
 import axios from 'axios';
-import { showFilms } from "./showFilms";
+import { showFilms } from './showFilms';
+
 // const axios = require("axios");
 
 const filmList = document.querySelector('.home-film-list');
 const loader = document.querySelector('.loader-container');
 
-
-
 // export async function getGenres() {
 //     return axios.get(
 //       `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
 //     );
-// } 
+// }
 
-
-// export async function showFilms(res) { 
+// export async function showFilms(res) {
 //     const loader = document.querySelector('.loader-container');
 //     const filmList = document.querySelector('.home-film-list');
 //   let currentFilmIndex = 0;
 //   const movies = res.data.results;
 //   loader.classList.remove('visually-hidden');
 //   // Pobieranie gatunków filmowych
-// let src_img 
+// let src_img
 //   const genresResponse = await getGenres();
 //     const genresMap = {};
 //     genresResponse.data.genres.forEach(genre => {
@@ -51,25 +49,24 @@ const loader = document.querySelector('.loader-container');
 //         </li>`;
 //     });
 //     loader.classList.add('visually-hidden');
-//     // Wstawianie wygenerowanego markupu do elementu HTML      
+//     // Wstawianie wygenerowanego markupu do elementu HTML
 //     filmList.innerHTML = markupArray.join('');
 
+// };
 
-
-// }; 
-
-
-
-
-let currentPage = 1;
 let itemsPerPage = 20;
 
-const fetchData = async (page = 1) => {
+export const fetchData = async (currPage = 1, pageCallback) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN&per_page=${itemsPerPage}&page=${page}`,
+      `https://api.themoviedb.org/3/movie/popular?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN&per_page=${itemsPerPage}&page=${currPage}`,
     );
     showFilms(response);
+    const data = response.data;
+    currPage = data.page;
+    totalPages = data.total_pages;
+    pageCallback(currPage, totalPages);
+
     // let currentFilmIndex = 0;
     // const movies = response.data.results;
     // console.log(movies);

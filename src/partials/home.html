@@ -3,15 +3,16 @@
 
   <!-- ------------------------------------- -->
   <!--            PAGINATION                 -->
-  
+
   <div class="pagination-container">
-    <button type="button" class="pagination-button arrows">
+    <button type="button" class="pagination-button arrows disabled" id="prev">
       <svg width="16" height="16" class="pagination-svg">
         <use href="./image/icons.svg#icon-arrow-left2"></use>
       </svg>
-      
     </button>
-    <button type="button" class="pagination-button hidden">1</button>
+    <div id="pagination"></div>
+
+    <!-- <button type="button" class="pagination-button" id="current">1</button>
     <button type="button" class="pagination-button dots">...</button>
     <button type="button" class="pagination-button">12</button>
     <button type="button" class="pagination-button">13</button>
@@ -19,8 +20,9 @@
     <button type="button" class="pagination-button">15</button>
     <button type="button" class="pagination-button">16</button>
     <button type="button" class="pagination-button dots">...</button>
-    <button type="button" class="pagination-button hidden">20</button>
-    <button type="button" class="pagination-button arrows">
+    <button type="button" class="pagination-button hidden">20</button> -->
+
+    <button type="button" class="pagination-button arrows" id="next">
       <svg width="16" height="16" class="pagination-svg">
         <use href="./image/icons.svg#icon-arrow-right2"></use>
       </svg>
