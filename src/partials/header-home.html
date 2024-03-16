@@ -1,36 +1,112 @@
 <header class="container header">
   <div clsaa="headerSection">
     <div class="navigation">
-    <a class="logo" id="logo"  href="./index.html">
-      <svg class="svgLogo" width="24" height="24">
-        <use href="./image/icons.svg#icon-logo"></use>
-      </svg>
-      <span class="textLogo">Filmoteka</span>
-    </a>
-    <ul class="navi">
-      <li class="naviItem naviItemDash"><a href="./index.html" class="link">HOME</a></li>
-      <li><a href="./partials/my-library.html" class="link">MY LIBRARY</a></li>
-      <li><a href="#" class="link">
-        <svg class="svgLogo" width="20" height="20">
-          <use href="./image/icons.svg#icon-user"></use>
+      <a class="logo" id="logo" href="./index.html">
+        <svg class="svgLogo" width="24" height="24">
+          <use href="./image/icons.svg#icon-logo"></use>
         </svg>
-      </a></li>
+        <span class="textLogo">Filmoteka</span>
+      </a>
+      <ul class="navi">
+        <li class="naviItem naviItemDash"><a href="./index.html" class="link">HOME</a></li>
+        <li><a href="./partials/my-library.html" class="link">MY LIBRARY</a></li>
+        <li>
+          <a href="#" class="link icon-user">
+            <svg class="svgLogo" width="20" height="20">
+              <use href="./image/icons.svg#icon-user"></use>
+            </svg>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="form">
-    <form id="search-form">
-      <div class="search-form" > 
-      <input type="text" class="searchQuery" name="searchQuery" autocomplete="off" placeholder="Movie search" />
-      <button type="submit" class="iconBtn" id="iconBtn">
-        <svg class="svgSearch" width="20" height="20">
-          <use href="./image/icons.svg#icon-search"></use>
-        </svg>
-      </button>
-      </div>
-    </form>
+      <form id="search-form">
+        <div class="search-form">
+          <input
+            type="text"
+            class="searchQuery"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Movie search"
+          />
+          <button type="submit" class="iconBtn" id="iconBtn">
+            <svg class="svgSearch" width="20" height="20">
+              <use href="./image/icons.svg#icon-search"></use>
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   <div>
-    <p class="errorText hiddenVisibility">Search result not successful. Enter the correct movie name and try again.</p>
+    <p class="errorText hiddenVisibility">
+      Search result not successful. Enter the correct movie name and try again.
+    </p>
+  </div>
+  <div id="userModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="container-log-window" id="container">
+        <div class="form-container-log-window sign-up-container-log-window">
+          <form id="signup-form" action="#">
+            <h1 class="h1-log-window">Create Account</h1>
+            <div class="social-container-log-window">
+              <a href="#" class="social-log-window"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-log-window"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social-log-window"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span class="span-log-window">or use your email for registration</span>
+            <input type="text" placeholder="Name" class="input-log-window" />
+
+            <input type="email" id="signup-email" placeholder="Email" class="input-log-window" />
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="Password"
+              class="input-log-window"
+            />
+            <button type="submit" class="button-log-window">Sign Up</button>
+          </form>
+        </div>
+        <div class="form-container-log-window sign-in-container-log-window">
+          <form id="login-form" action="#">
+            <h1 class="h1-log-window">Sign in</h1>
+            <div class="social-container-log-window">
+              <a href="#" class="social-log-window"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-log-window"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social-log-window"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span class="span-log-window">or use your account</span>
+
+            <input type="email" id="login-email" placeholder="Email" class="input-log-window" />
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Password"
+              class="input-log-window"
+            />
+            <a href="#" class="a-social-log-window">Forgot your password?</a>
+            <button type="submit" class="button-log-window">Sign In</button>
+          </form>
+        </div>
+        <button id="logout-btn" class="button-log-window" style="display: none">Logout</button>
+        <div class="overlay-container-log-window">
+          <div class="overlay-log-window">
+            <div class="overlay-panel-log-window overlay-left-log-window">
+              <h1 class="h1-log-window">Welcome Back!</h1>
+              <p class="p-log-window">
+                To keep connected with us please login with your personal info
+              </p>
+              <button class="ghost-log-window" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel-log-window overlay-right-log-window">
+              <h1 class="h1-log-window">Hello, Friend!!!</h1>
+              <p class="p-log-window">Enter your personal details and start journey with us</p>
+              <button class="ghost-log-window" id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
