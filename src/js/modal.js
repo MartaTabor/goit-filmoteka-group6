@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { locStorage } from './modalButtons.js'; // Import funkcji locStorage z pliku modalButtons.js
 import { startParticleAnimation } from './buttonEffects.js';
+import { fetchFilmsById } from "./fetchFilms.js";
 
 let filmIndex = 0;
 let film = {};
@@ -8,49 +9,38 @@ let film = {};
 const addQueueRef = document.querySelector('.button-queue');
 const addWatchedRef = document.querySelector('.button-watched');
 // Nasłuchiwanie kliknięć na całym ciele dokumentu
+
+
 document.body.addEventListener('click', async function (event) {
   // Pobranie elementu modalu
   const modal = document.querySelector('[data-modal]');
   // Sprawdzenie, czy kliknięty element lub jego rodzic posiada atrybut [data-modal-open]
   if (event.target.closest('[data-modal-open]')) {
-    // Pobranie indeksu filmu na podstawie klikniętego elementu
+    // Pobranie indeksu filmu na podstawie klikniętego elementu 
     filmIndex = event.target.closest('.home-film-item').dataset.index;
-    console.log(`Index filmu: ${filmIndex}`);
     // Pobranie i wyświetlenie szczegółów filmu na podstawie indeksu
-    await fetchFilmDetailsByIndex(filmIndex, film);
+    await fetchFilmDetailsByIndex(filmIndex);
     // Usunięcie klasy ukrywającej modal, aby go wyświetlić
     modal.classList.remove('film-details-is-hidden');
   }
 });
+
+
 // Funkcja pobierająca i wyświetlająca szczegóły filmu na podstawie jego indeksu
-async function fetchFilmDetailsByIndex(index) {
+export async function fetchFilmDetailsByIndex(idFilms) {
   try {
-    // Pobranie listy filmów z API
-    const response = await axios.get(
-      'https://api.themoviedb.org/3/discover/movie?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN',
-    );
-    // Wybranie konkretnego filmu na podstawie przekazanego indeksu
-    let film = response.data.results[index];
-    console.log(`Id danego filmu: ${film.id}`);
-    // Pobranie szczegółowych informacji o filmie na podstawie jego ID
-    const filmDetails = await axios.get(
-      `https://api.themoviedb.org/3/movie/${film.id}?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
-    );
-    const genresResponse = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
-    );
-    const genresList = {};
-    genresResponse.data.genres.forEach(genre => {
-      genresList[genre.id] = genre.name;
+
+    const filmDetails = await fetchFilmsById(idFilms); 
+    const genreNames = filmDetails.data.genres.map(genre => {
+      return genre.name;
     });
-    const genreNames = film.genre_ids.map(genreId => genresList[genreId]).slice(0, 2);
     const genresMarkup = genreNames.join(', ');
     // Utworzenie zawartości modala na podstawie pobranych szczegółów filmu
     const modalWindow = document.querySelector('.film-details-modal-window');
     const modalContent = ` <a class="film-details-close" data-modal-close>
      <svg class="close-button" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g></svg>
     </a>
-            <div class="film-details-modal" data-index="${index}">
+            <div class="film-details-modal" data-index="${idFilms}">
                 <div class="modal-film-poster-div">
                     <img class="modal-film-poster" src="https://image.tmdb.org/t/p/original/${
                       filmDetails.data.poster_path
@@ -108,7 +98,7 @@ async function fetchFilmDetailsByIndex(index) {
     modalButtons.forEach(button => {
       button.addEventListener('click', startParticleAnimation);
     });
-    locStorage(film);
+    locStorage(filmDetails);
     const modalBtns = document.querySelectorAll('.modal-buttons');
     let currentTheme = localStorage.getItem('theme');
 
