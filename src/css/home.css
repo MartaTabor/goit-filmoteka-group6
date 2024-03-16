@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 .main-section {
-  padding-top: 20px;
+  padding-top: 60px;
   margin: 0 auto;
   width: 320px;
   font-family: 'Roboto', sans-serif;
@@ -68,6 +68,7 @@
 @media screen and (min-width: 768px) {
   .main-section {
     width: 768px;
+    padding-top: 75px;
   }
   .home-film-list {
     gap: 32px;
@@ -77,9 +78,7 @@
     min-height: 495px;
     height: 100%;
   }
-  .home-film-item:hover {
-    scale: 1.02;
-  }
+
   .home-film-image {
     height: 455px;
   }
@@ -89,15 +88,18 @@
   .main-section {
     width: 1280px;
   }
-  .home-film-list {
+  /* .home-film-list {
     gap: 16px;
-    /* justify-content: flex-start;
-    padding-left: 31.5px; */
-  }
+    justify-content: flex-start;
+    padding-left: 31.5px;
+  } */
   .home-film-item {
     width: 395px;
     min-height: 634px;
     height: 100%;
+  }
+  .home-film-item:hover {
+    scale: 1.02;
   }
   .home-film-image {
     height: 574px;
@@ -113,66 +115,5 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
-  }
-}
-
-/* ---------------------------------------------------------------- */
-/* <-----------------------  PAGINATION  -------------------------> */
-.pagination-container {
-  margin: 40px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.pagination-button {
-  width: 40px;
-  height: 40px;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-.arrows {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f7f7f7;
-  font-weight: normal;
-  color: white;
-}
-.arrows:focus {
-  background-color: var(--info-color);
-}
-
-.arrows:focus .pagination-svg {
-  fill: white;
-}
-
-/* .pagination-button:hover, */
-.pagination-button:focus {
-  background-color: var(--info-color);
-  color: #fff;
-}
-.dots,
-.hidden {
-  display: none;
-}
-@media screen and (min-width: 768px) {
-  .pagination-container {
-    margin: 60px 0;
-  }
-  .dots {
-    display: flex;
-    justify-content: center;
-    line-height: 34px;
-    cursor: auto;
-  }
-  .dots:focus {
-    background-color: transparent;
-    color: black;
-  }
-  .hidden {
-    display: block;
   }
 }

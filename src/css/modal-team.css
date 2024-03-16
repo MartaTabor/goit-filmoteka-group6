@@ -32,7 +32,7 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 50%;
+  width: 800px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -44,12 +44,12 @@
   font-weight: bold;
   cursor: pointer;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 1px;
+  right: 10px;
   width: 30px;
   height: 30px;
   line-height: 30px;
-  text-align: center;
+  text-align: right;
 }
 
 .close:hover,
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
- /*  Students list */
+/*  Students list */
 .student-list {
   list-style: none;
   padding: 0;
@@ -67,17 +67,68 @@
 }
 
 .student-list li {
-  margin-right: 20px;
-  margin-bottom: 20px;
-  text-align: center;
   flex: 0 0 calc(50% - 40px);
-  max-width: calc(
-    50% - 40px
-  );
+  max-width: calc(50% - 40px);
+  padding: 10px;
 }
 
 .student-list img {
   width: 100%;
-  max-width: 100%;
+  max-width: 100px;
   height: auto;
+}
+
+.student {
+  display: flex;
+  align-items: center;
+}
+
+.student-image {
+  margin-right: 20px;
+}
+
+.team-member,
+.team-member-function {
+  margin: 0;
+  text-align: left;
+}
+
+.team-member {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.team-member:hover {
+  color: #ff6b08;
+}
+
+.team-member-function {
+  color: #ff6b08;
+  font-size: 16px;
+  text-align: left;
+}
+
+@media only screen and (max-width: 767px) {
+  .student-list li {
+    margin-right: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .student-image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .student-info {
+    text-align: center;
+  }
+
+  .modal-content {
+    width: 50%;
+}
 }

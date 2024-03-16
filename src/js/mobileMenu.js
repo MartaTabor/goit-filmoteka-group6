@@ -1,3 +1,11 @@
+import { startParticleAnimation } from './buttonEffects.js';
+
+const libraryNavSpan = document.querySelector('.plus-minus');
+const libraryNavList = document.querySelector('.library-list');
+const navLibrary = document.querySelector('.nav-library');
+const navBottomLi = document.querySelectorAll('.nav-bottom-li');
+const navBtns = document.querySelectorAll('.list li a');
+
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
 const navElements = document.querySelectorAll('.mobile-nav');
@@ -7,12 +15,28 @@ const isVisible = () => {
   const innerWidth = window.innerWidth;
   const scrolled = window.scrollY;
 
-  if (innerWidth < 768 && scrolled >= 216) {
+  if (innerWidth < 1280 && scrolled >= 216) {
     mobileMenu.style.display = 'flex';
   } else {
     mobileMenu.style.display = 'none';
     navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
   }
+};
+
+const isHidden = () => {
+  const isNavHidden = libraryNavList.classList.toggle('nav-hidden');
+  libraryNavSpan.innerHTML = isNavHidden
+    ? '<i class="fa-solid fa-plus"></i>'
+    : '<i class="fa-solid fa-minus"></i>';
+
+  navBottomLi.forEach(navItem => {
+    if (isNavHidden) {
+      navItem.style.transition = 'transform 500ms ease';
+      navItem.classList.remove('move-down');
+    } else {
+      navItem.classList.add('move-down');
+    }
+  });
 };
 
 window.addEventListener('scroll', isVisible);
@@ -26,4 +50,23 @@ openBtn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
   navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
+});
+
+navLibrary.addEventListener('click', e => {
+  e.preventDefault();
+  isHidden();
+});
+function handleButtonClick(e) {
+  // Pobierz współrzędne przycisku
+  const buttonRect = e.target.getBoundingClientRect();
+  const x = buttonRect.left + buttonRect.width / 2;
+  const y = buttonRect.top + buttonRect.height / 2;
+
+  // Wywołaj funkcję startParticleAnimation z odpowiednimi współrzędnymi
+  startParticleAnimation(e, x, y);
+}
+
+// Dodaj event listenery na kliknięcie dla każdego przycisku nawigacyjnego
+navBtns.forEach(btn => {
+  btn.addEventListener('click', handleButtonClick);
 });
