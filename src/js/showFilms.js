@@ -1,20 +1,14 @@
 
 import axios from 'axios';
 
-// import { showFilms } from "./showFilms";
-
-async function getGenres() {
-    return axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN`,
-    );
-} 
-
+import { getGenres } from "./fetchFilms.js";
 
 export async function showFilms(res) { 
     const loader = document.querySelector('.loader-container');
     const filmList = document.querySelector('.home-film-list');
   let currentFilmIndex = 0;
   const movies = res.data.results;
+  console.log(movies)
   loader.classList.remove('visually-hidden');
   // Pobieranie gatunków filmowych
 let src_img 
@@ -34,7 +28,7 @@ let src_img
             src_img = '../image/noImage.jpg';
         }
       return `
-        <li class="home-film-item" data-index="${currentFilmIndex++}" data-modal-open>
+        <li class="home-film-item" data-index="${movie.id}" data-modal-open>
           <img class="home-film-image" src="${src_img}" alt="${movie.title}">
           <div class="home-film-details">
             <h2 class="home-film-title">${movie.title}</h2>
@@ -53,3 +47,5 @@ let src_img
 
 
 }; 
+
+
