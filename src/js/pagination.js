@@ -18,60 +18,46 @@ function createPaginationButtons(currPage) {
   if (currPage === 1) {
     firstPageButton.classList.add('active');
   }
+  firstPageButton.classList.add('pagination-button');
   buttons.appendChild(firstPageButton);
 
   // Dodaj trzy kropki po pierwszej stronie, jeśli więcej niż 3 strony
-  if (totalPages > 3) {
-    if (currPage > 2) {
-      const dotsAfterFirstPage = document.createElement('span');
-      dotsAfterFirstPage.textContent = '...';
-      buttons.appendChild(dotsAfterFirstPage);
-    }
-
-    // Wygeneruj przyciski dla poszczególnych stron - max 5
-    for (let i = Math.max(2, currPage - 2); i <= Math.min(currPage + 2, totalPages - 1); i++) {
-      const pageButton = createButton(i.toString(), i);
-      if (i === currPage) {
-        pageButton.classList.add('active');
-      }
-      buttons.appendChild(pageButton);
-    }
-
-    // Dodaj trzy kropki, jeśli nie jesteśmy na pierwszej stronie
-    if (currPage >= 1) {
-      const dots = document.createElement('span');
-      dots.textContent = '...';
-      buttons.appendChild(dots);
-    } else {
-      for (let i = 2; i <= totalPages - 1; i++) {
-        const pageButton = createButton(i.toString(), i);
-        if (i === currPage) {
-          pageButton.classList.add('active');
-        }
-        buttons.appendChild(pageButton);
-      }
-    }
-
-    // Przycisk dla ostatniej strony
-    const lastPageButton = createButton(totalPages.toString(), totalPages);
-    if (currPage === totalPages) {
-      lastPageButton.classList.add('active');
-    }
-    buttons.appendChild(lastPageButton);
-
-    pagination.appendChild(buttons);
+  if (totalPages > 3 && currPage > 2) {
+    const dotsAfterFirstPage = document.createElement('span');
+    dotsAfterFirstPage.textContent = '...';
+    dotsAfterFirstPage.classList.add('dots');
+    dotsAfterFirstPage.classList.add('pagination-span');
+    buttons.appendChild(dotsAfterFirstPage);
   }
 
-  // Funkcja pomocnicza do tworzenia przycisków
-  function createButton(text, page) {
-    const button = document.createElement('button');
-    button.textContent = text;
-    button.addEventListener('click', () => {
-      pageCall(page);
-      window.scrollTo(0, 0);
-    });
-    return button;
+  // Wygeneruj przyciski dla poszczególnych stron - max 5
+  for (let i = Math.max(2, currPage - 2); i <= Math.min(currPage + 2, totalPages - 1); i++) {
+    const pageButton = createButton(i.toString(), i);
+    if (i === currPage) {
+      pageButton.classList.add('active');
+    }
+    buttons.appendChild(pageButton);
+    pageButton.classList.add('pagination-button');
   }
+
+  // Dodaj trzy kropki, jeśli nie jesteśmy na pierwszej stronie
+  if (totalPages > 3 && currPage < totalPages - 1) {
+    const dotsBeforeLastPage = document.createElement('span');
+    dotsBeforeLastPage.textContent = '...';
+    dotsBeforeLastPage.classList.add('dots');
+    dotsBeforeLastPage.classList.add('pagination-span');
+    buttons.appendChild(dotsBeforeLastPage);
+  }
+
+  // Przycisk dla ostatniej strony
+  const lastPageButton = createButton(totalPages.toString(), totalPages);
+  if (currPage === totalPages) {
+    lastPageButton.classList.add('active');
+  }
+  buttons.appendChild(lastPageButton);
+  lastPageButton.classList.add('pagination-button');
+
+  pagination.appendChild(buttons);
 
   //Usun disabled do prev, jesli aktualna strona nie jest pierwsza
   if (currPage > 1) {
@@ -87,6 +73,18 @@ function createPaginationButtons(currPage) {
     next.classList.remove('disabled');
   }
 }
+
+// Funkcja pomocnicza do tworzenia przycisków
+function createButton(text, page) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.addEventListener('click', () => {
+    pageCall(page);
+    window.scrollTo(0, 0);
+  });
+  return button;
+}
+
 // Listenery na next i prev buttons
 next.addEventListener('click', () => {
   if (currPage < totalPages) {

@@ -65,7 +65,9 @@ export const fetchData = async (currPage = 1, pageCallback) => {
     const data = response.data;
     currPage = data.page;
     totalPages = data.total_pages;
-    pageCallback(currPage, totalPages);
+    if (typeof pageCallback === 'function') {
+      pageCallback(currPage, totalPages);
+    }
 
     // let currentFilmIndex = 0;
     // const movies = response.data.results;
