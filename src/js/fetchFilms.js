@@ -1,6 +1,7 @@
 // axios
 import axios from 'axios';
 import { createPaginationButtons } from './pagination';
+import { showFilms } from './showFilms';
 
 //Pobieranie gatunków
 export async function getGenres() {
@@ -20,12 +21,14 @@ export async function fetchFilmsByQuery(query, page) {
       },
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer your_access_token_here',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjRiYzVmYTA0ZTcwZWUwNmI1YmZjZmZkZDAwMjhmZiIsInN1YiI6IjY1ZjFiYzIwZDY0YWMyMDBjYTVkMWU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kSA66Srxuh9huCM-91QWv-1PAFYBxqjt-fFzzJb4bmg',
       },
     });
 
     const data = response.data;
     const totalPages = data.total_pages;
+    showFilms(response);
 
     createPaginationButtons(page, totalPages, page => fetchFilmsByQuery(query, page));
   } catch (error) {
