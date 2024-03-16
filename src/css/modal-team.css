@@ -8,7 +8,7 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 50px;
+  padding: 5%;
 }
 
 .modal.show {
@@ -28,13 +28,15 @@
 /* Modal */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
   width: 800px;
+  height: 70vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
+  overflow-y: auto;
 }
 
 /*  Button */
@@ -173,7 +175,7 @@
   }
 
   .modal-content {
-    width: 50%;
+    width: 80%;
   }
 
   .student-picture {
