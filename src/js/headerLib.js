@@ -162,7 +162,7 @@ function createMovieMarkup(movie) {
 
   // Tworzenie markupu dla pojedynczego filmu
   return `
-        <li class="home-film-item" data-index="${currentFilmIndex++}" data-modal-open>
+        <li class="home-film-item" data-index="${movie.id}" data-modal-open>
           <img class="home-film-image" src="https://image.tmdb.org/t/p/original/${movie.poster_path}" alt="${movie.title}">
           <div class="home-film-details">
             <h2 class="home-film-title">${movie.title}</h2>
