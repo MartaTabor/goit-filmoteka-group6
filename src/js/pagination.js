@@ -1,17 +1,18 @@
 import { fetchData } from './popularFilms';
 import { fetchFilmsByQuery } from './fetchFilms';
-import {serchAndShowFilms} from "./searchFormListener.js"
+import { serchAndShowFilms } from './searchFormListener.js';
 
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const pagination = document.getElementById('pagination');
 const searchForm = document.querySelector('#search-form');
 let currPage = 1;
-let totalPages = 500;
+let totalPages = 1;
 let query = '';
 
 const fetchDataCallback = async page => {
   await fetchData(page);
+  totalPages = 500;
   currPage = page;
   createPaginationButtons(currPage, totalPages);
 };
@@ -19,8 +20,8 @@ const fetchDataCallback = async page => {
 const fetchFilmsByQueryCallback = async (query, page) => {
   await fetchFilmsByQuery(query, page);
   currPage = page;
+  totalPages = 1;
   createPaginationButtons(currPage, totalPages);
-  updatePaginationListeners();
 };
 
 // Funkcja tworząca przyciski paginacji
@@ -33,6 +34,12 @@ export function createPaginationButtons(currPage, totalPages) {
   const firstPageButton = createButton('1', 1);
   if (currPage === 1) {
     firstPageButton.classList.add('active');
+    prev.removeEventListener('click', handleNextButtonClick);
+    prev.classList.add('disabled');
+  } else {
+    firstPageButton.classList.remove('active');
+    prev.addEventListener('click', handlePrevButtonClick);
+    prev.classList.remove('disabled');
   }
   firstPageButton.classList.add('pagination-button');
   buttons.appendChild(firstPageButton);
@@ -69,13 +76,19 @@ export function createPaginationButtons(currPage, totalPages) {
   const lastPageButton = createButton(totalPages.toString(), totalPages);
   if (currPage === totalPages) {
     lastPageButton.classList.add('active');
+    next.removeEventListener('click', handleNextButtonClick);
+    next.classList.add('disabled');
+  } else {
+    lastPageButton.classList.remove('active');
+    next.addEventListener('click', handleNextButtonClick);
+    next.classList.remove('disabled');
   }
   buttons.appendChild(lastPageButton);
   lastPageButton.classList.add('pagination-button');
 
   pagination.appendChild(buttons);
 
-  updatePaginationState();
+  // updatePaginationState();
 }
 
 function createButton(text, page) {
@@ -87,19 +100,6 @@ function createButton(text, page) {
   });
   return button;
 }
-
-// Funkcja do zaktualizowania listenerow
-function updatePaginationListeners() {
-  next.removeEventListener('click', handleNextButtonClick);
-  prev.removeEventListener('click', handlePrevButtonClick);
-
-  next.addEventListener('click', handleNextButtonClick);
-  prev.addEventListener('click', handlePrevButtonClick);
-}
-
-// Listenery na next i prev buttons
-next.addEventListener('click', handleNextButtonClick);
-prev.addEventListener('click', handlePrevButtonClick);
 
 function handleNextButtonClick() {
   if (currPage < totalPages) {
@@ -115,45 +115,18 @@ function handlePrevButtonClick() {
   }
 }
 
-//Funkcja do zmiany query
-function handleQueryChange(newQuery) {
-  query = newQuery;
-  currPage = 1;
-  if (query) {
-    fetchFilmsByQueryCallback(query, currPage);
-  } else {
-    fetchDataCallback(currPage);
-  }
-}
-
 // Funkcja obsługująca kliknięcie na przycisk paginacji
 function handleButtonClick(page) {
   currPage = page;
   query = searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`);
-  if (query==="") {
+  if (query === '') {
     console.log(`Paginacja po popular films pade: ${page}`);
     fetchDataCallback(page);
   } else {
-    
     console.log(`Paginacja po search films pade: ${page}`);
     serchAndShowFilms(searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`), page);
   }
   window.scrollTo(0, 0);
-}
-
-// Funkcja do aktualizacji stanu paginacji
-function updatePaginationState() {
-  if (currPage > 1) {
-    prev.classList.remove('disabled');
-  } else {
-    prev.classList.add('disabled');
-  }
-
-  if (currPage === totalPages) {
-    next.classList.add('disabled');
-  } else {
-    next.classList.remove('disabled');
-  }
 }
 
 fetchDataCallback(currPage);
