@@ -1,10 +1,11 @@
 import { fetchData } from './popularFilms';
 import { fetchFilmsByQuery } from './fetchFilms';
+import {serchAndShowFilms} from "./searchFormListener.js"
 
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const pagination = document.getElementById('pagination');
-
+const searchForm = document.querySelector('#search-form');
 let currPage = 1;
 let totalPages = 500;
 let query = '';
@@ -128,10 +129,14 @@ function handleQueryChange(newQuery) {
 // Funkcja obsługująca kliknięcie na przycisk paginacji
 function handleButtonClick(page) {
   currPage = page;
-  if (query) {
-    fetchFilmsByQueryCallback(query, page);
-  } else {
+  query = searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`);
+  if (query==="") {
+    console.log(`Paginacja po popular films pade: ${page}`);
     fetchDataCallback(page);
+  } else {
+    
+    console.log(`Paginacja po search films pade: ${page}`);
+    serchAndShowFilms(searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`), page);
   }
   window.scrollTo(0, 0);
 }
