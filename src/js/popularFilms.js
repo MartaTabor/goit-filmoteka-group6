@@ -3,6 +3,7 @@ import { showFilms } from './showFilms';
 import { createPaginationButtons } from './pagination';
 
 let itemsPerPage = 20;
+let totalPages = 1;
 
 export const fetchData = async (page = 1) => {
   try {
@@ -10,8 +11,8 @@ export const fetchData = async (page = 1) => {
       `https://api.themoviedb.org/3/movie/popular?api_key=c2f18aa0c4ee94c87f87834077fd721a&language=en-EN&per_page=${itemsPerPage}&page=${page}`,
     );
     showFilms(response);
-    const data = response.data;
-    const totalPages = 500;
+    // const data = response.data;
+    totalPages = 500;
 
     createPaginationButtons(page, totalPages, fetchData);
   } catch (error) {
