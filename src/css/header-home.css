@@ -56,7 +56,7 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 1.17;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .naviItem {
@@ -74,14 +74,7 @@
   transform: translate(-50%);
 }
 
-.logo:hover,
-.logo:focus,
-.link:hover,
-.link:focus {
-  color: var(--color-orange, orange);
-  fill: var(--color-orange, orange);
-  stroke: var(--color-orange, orange);
-}
+
 
 .form {
   text-align: center;
@@ -93,6 +86,7 @@
   /* max-width: 320px; */
   display: inline-block;
   justify-content: center;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .searchQuery {
@@ -109,6 +103,8 @@
   font-size: 14px;
   color: #fff;
   padding-right: 15px;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-bottom-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  
 }
 
 .iconBtn {
@@ -121,6 +117,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+
 }
 
 .svgSearch {
@@ -128,6 +125,9 @@
   height: 10px;
   fill: none;
   stroke: #fff;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1); */
+
 }
 .errorText {
   margin: 20px auto;
@@ -137,6 +137,21 @@
   font-weight: 400;
   font-size: 14px;
 }
+
+.logo:hover,
+.logo:focus,
+.link:hover,
+.link:focus,
+.svgSearch:focus,
+.svgSearch:hover,
+.searchQuery:focus,
+.searchQuery:hover {
+  color: var(--color-orange, orange);
+  fill: var(--color-orange, orange);
+  stroke: var(--color-orange, orange);
+  border-bottom-color:var(--color-orange, orange);
+}
+
 .hiddenVisibility {
   visibility: hidden;
   /* Ukrycie elementu zachowując jego przestrzeń w układzie strony */
