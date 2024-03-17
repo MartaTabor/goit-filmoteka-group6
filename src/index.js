@@ -1,7 +1,7 @@
 import './css/main.css';
 
 import './js/fetchFilms.js';
-import './js/logWindow.js';
+// import './js/logWindow.js';
 import './js/mobileMenu.js';
 import './js/modal.js';
 import './js/modalButtons.js';
