@@ -73,19 +73,25 @@ export function createPaginationButtons(currPage, totalPages) {
   }
 
   // Przycisk dla ostatniej strony
-  const lastPageButton = createButton(totalPages.toString(), totalPages);
-  if (currPage === totalPages) {
-    lastPageButton.classList.add('active');
+  if (totalPages > 1) {
+    const lastPageButton = createButton(totalPages.toString(), totalPages);
+    if (currPage === totalPages) {
+      lastPageButton.classList.add('active');
+      next.removeEventListener('click', handleNextButtonClick);
+      next.classList.add('disabled');
+    } else {
+      lastPageButton.classList.remove('active');
+      next.addEventListener('click', handleNextButtonClick);
+      next.classList.remove('disabled');
+    }
+    buttons.appendChild(lastPageButton);
+    lastPageButton.classList.add('pagination-button');
+  } else {
     next.removeEventListener('click', handleNextButtonClick);
     next.classList.add('disabled');
-  } else {
-    lastPageButton.classList.remove('active');
-    next.addEventListener('click', handleNextButtonClick);
-    next.classList.remove('disabled');
+    prev.removeEventListener('click', handleNextButtonClick);
+    prev.classList.add('disabled');
   }
-  buttons.appendChild(lastPageButton);
-  lastPageButton.classList.add('pagination-button');
-
   pagination.appendChild(buttons);
 
   // updatePaginationState();
