@@ -25,11 +25,11 @@ let src_img
             src_img = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
         }
         else {
-            src_img = '../image/noImage.jpg';
+            src_img = 'https://as2.ftcdn.net/v2/jpg/04/00/24/31/1000_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg';
         }
       return `
         <li class="home-film-item" data-index="${movie.id}" data-modal-open>
-          <img class="home-film-image" src="${src_img}" alt="${movie.title}">
+          <img class="home-film-image" src="${src_img}" alt="${movie.title}" width="200px" hight="300px">
           <div class="home-film-details">
             <h2 class="home-film-title">${movie.title}</h2>
             <p class="home-film-info">
