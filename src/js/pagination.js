@@ -11,12 +11,15 @@ let query = '';
 
 const fetchDataCallback = async page => {
   await fetchData(page);
+  currPage = page;
+  createPaginationButtons(currPage, totalPages);
 };
 
 const fetchFilmsByQueryCallback = async (query, page) => {
   await fetchFilmsByQuery(query, page);
   currPage = page;
   createPaginationButtons(currPage, totalPages);
+  updatePaginationListeners();
 };
 
 // Funkcja tworząca przyciski paginacji
@@ -71,45 +74,45 @@ export function createPaginationButtons(currPage, totalPages) {
 
   pagination.appendChild(buttons);
 
-  function createButton(text, page) {
-    const button = document.createElement('button');
-    button.textContent = text;
-    button.addEventListener('click', () => {
-      handleButtonClick(page);
-      window.scrollTo(0, 0);
-    });
-    return button;
-  }
+  updatePaginationState();
+}
 
-  //Usun disabled do prev, jesli aktualna strona nie jest pierwsza
-  if (currPage > 1) {
-    prev.classList.remove('disabled');
-  } else {
-    prev.classList.add('disabled');
-  }
+function createButton(text, page) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.addEventListener('click', () => {
+    handleButtonClick(page);
+    window.scrollTo(0, 0);
+  });
+  return button;
+}
 
-  //Dodaj disabled do next, jesli aktualna strona jest ostatnia
-  if (currPage === totalPages) {
-    next.classList.add('disabled');
-  } else {
-    next.classList.remove('disabled');
-  }
+// Funkcja do zaktualizowania listenerow
+function updatePaginationListeners() {
+  next.removeEventListener('click', handleNextButtonClick);
+  prev.removeEventListener('click', handlePrevButtonClick);
+
+  next.addEventListener('click', handleNextButtonClick);
+  prev.addEventListener('click', handlePrevButtonClick);
 }
 
 // Listenery na next i prev buttons
-next.addEventListener('click', () => {
+next.addEventListener('click', handleNextButtonClick);
+prev.addEventListener('click', handlePrevButtonClick);
+
+function handleNextButtonClick() {
   if (currPage < totalPages) {
     handleButtonClick(currPage + 1);
     window.scrollTo(0, 0);
   }
-});
+}
 
-prev.addEventListener('click', () => {
+function handlePrevButtonClick() {
   if (currPage > 1) {
     handleButtonClick(currPage - 1);
     window.scrollTo(0, 0);
   }
-});
+}
 
 //Funkcja do zmiany query
 function handleQueryChange(newQuery) {
@@ -122,7 +125,7 @@ function handleQueryChange(newQuery) {
   }
 }
 
-// Funkcja dla buttona i pobierania danych
+// Funkcja obsługująca kliknięcie na przycisk paginacji
 function handleButtonClick(page) {
   currPage = page;
   if (query) {
@@ -132,4 +135,20 @@ function handleButtonClick(page) {
   }
   window.scrollTo(0, 0);
 }
+
+// Funkcja do aktualizacji stanu paginacji
+function updatePaginationState() {
+  if (currPage > 1) {
+    prev.classList.remove('disabled');
+  } else {
+    prev.classList.add('disabled');
+  }
+
+  if (currPage === totalPages) {
+    next.classList.add('disabled');
+  } else {
+    next.classList.remove('disabled');
+  }
+}
+
 fetchDataCallback(currPage);
