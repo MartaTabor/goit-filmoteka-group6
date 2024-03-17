@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { locStorage } from './modalButtons.js'; // Import funkcji locStorage z pliku modalButtons.js
 import { startParticleAnimation } from './buttonEffects.js';
-import { fetchFilmsById } from "./fetchFilms.js";
+import { fetchFilmsById } from './fetchFilms.js';
+import { fetchFilmsByIds } from './headerLib.js';
 
 let filmIndex = 0;
 let film = {};
@@ -10,13 +11,12 @@ const addQueueRef = document.querySelector('.button-queue');
 const addWatchedRef = document.querySelector('.button-watched');
 // Nasłuchiwanie kliknięć na całym ciele dokumentu
 
-
 document.body.addEventListener('click', async function (event) {
   // Pobranie elementu modalu
   const modal = document.querySelector('[data-modal]');
   // Sprawdzenie, czy kliknięty element lub jego rodzic posiada atrybut [data-modal-open]
   if (event.target.closest('[data-modal-open]')) {
-    // Pobranie indeksu filmu na podstawie klikniętego elementu 
+    // Pobranie indeksu filmu na podstawie klikniętego elementu
     filmIndex = event.target.closest('.home-film-item').dataset.index;
     // Pobranie i wyświetlenie szczegółów filmu na podstawie indeksu
     await fetchFilmDetailsByIndex(filmIndex);
@@ -25,12 +25,10 @@ document.body.addEventListener('click', async function (event) {
   }
 });
 
-
 // Funkcja pobierająca i wyświetlająca szczegóły filmu na podstawie jego indeksu
 export async function fetchFilmDetailsByIndex(idFilms) {
   try {
-
-    const filmDetails = await fetchFilmsById(idFilms); 
+    const filmDetails = await fetchFilmsById(idFilms);
     const genreNames = filmDetails.data.genres.map(genre => {
       return genre.name;
     });
