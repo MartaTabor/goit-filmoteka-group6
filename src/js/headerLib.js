@@ -1,4 +1,3 @@
-
 // 'use strict';
 
 // // Pobranie danych z localStorage dla klucza 'movies-watched'
@@ -70,28 +69,27 @@
 // }
 
 // // Nasłuchiwanie zdarzenia DOMContentLoaded
-// document.addEventListener('DOMContentLoaded', () => { 
-//     const buttonWatched = document.getElementById('btnWatched'); 
-//     const buttonQueue = document.getElementById('btnQueue'); 
-    
+// document.addEventListener('DOMContentLoaded', () => {
+//     const buttonWatched = document.getElementById('btnWatched');
+//     const buttonQueue = document.getElementById('btnQueue');
+
 //     // Dodanie nasłuchiwania kliknięcia na przycisk "Watched"
-//     buttonWatched.addEventListener('click', () => { 
+//     buttonWatched.addEventListener('click', () => {
 //         renderLibrary(watchedMovies);
 //         buttonWatched.classList.add('isActive'); // Dodanie klasy CSS 'active' dla podświetlenia
 //         buttonQueue.classList.remove('isActive'); // Usunięcie klasy CSS 'active' z drugiego przycisku
-//     }); 
-    
+//     });
+
 //     // Dodanie nasłuchiwania kliknięcia na przycisk "Queue"
-//     buttonQueue.addEventListener('click', () => { 
+//     buttonQueue.addEventListener('click', () => {
 //         renderLibrary(queueMovies);
 //         buttonQueue.classList.add('isActive'); // Dodanie klasy CSS 'active' dla podświetlenia
 //         buttonWatched.classList.remove('isActive'); // Usunięcie klasy CSS 'active' z pierwszego przycisku
-//     }); 
+//     });
 
 //     // Wywołanie funkcji renderującej bibliotekę filmów po załadowaniu strony
 //     loadLibraryOnPageLoad();
 // });
- 
 
 // -----------------------------------próba wyszukania filmu po id------------------------------
 
@@ -100,6 +98,7 @@
 import axios from 'axios';
 
 let currentFilmIndex = 0;
+const loader = document.querySelector('.loader-container');
 
 // Funkcja wyszukująca filmy na podstawie listy identyfikatorów
 async function fetchFilmsByIds(movieIds) {
@@ -109,19 +108,20 @@ async function fetchFilmsByIds(movieIds) {
     params: {
       api_key: '5abbb3dbf9a78bf33887465dc33dbfa3', // Dodaj swój klucz API
       language: 'en-US',
-      append_to_response: 'credits' // Jeśli chcesz pobierać również informacje o obsadzie, możesz to tutaj zdefiniować
+      append_to_response: 'credits', // Jeśli chcesz pobierać również informacje o obsadzie, możesz to tutaj zdefiniować
     },
     headers: {
-      accept: 'application/json'
-    }
+      accept: 'application/json',
+    },
   };
+  loader.classList.remove('visually-hidden');
 
   // Mapowanie listy identyfikatorów na listę zapytań do API
   const requests = movieIds.map(movieId =>
     axios.request({
       ...options,
-      url: `${options.url}/${movieId}` // Dodaj identyfikator filmu do URL-a
-    })
+      url: `${options.url}/${movieId}`, // Dodaj identyfikator filmu do URL-a
+    }),
   );
 
   // Wykonaj równoległe zapytania do API dla każdego identyfikatora filmu
@@ -133,7 +133,7 @@ async function fetchFilmsByIds(movieIds) {
 // Funkcja renderująca bibliotekę filmów
 function renderLibrary(libraryData) {
   const galleryLibrary = document.querySelector('.gallery-library');
-
+  loader.classList.add('visually-hidden');
   // Wyczyszczenie zawartości galerii przed dodaniem nowych elementów
   galleryLibrary.innerHTML = '';
 
@@ -158,12 +158,16 @@ function renderLibrary(libraryData) {
 // Funkcja tworząca markup filmu
 function createMovieMarkup(movie) {
   // Tworzenie markupu dla gatunków filmowych
-  const genresMarkup = movie.genres.map(genre => `<span class="home-film-genre">${genre.name}</span>`).join(' | ');
+  const genresMarkup = movie.genres
+    .map(genre => `<span class="home-film-genre">${genre.name}</span>`)
+    .join(' | ');
 
   // Tworzenie markupu dla pojedynczego filmu
   return `
         <li class="home-film-item" data-index="${movie.id}" data-modal-open>
-          <img class="home-film-image" src="https://image.tmdb.org/t/p/original/${movie.poster_path}" alt="${movie.title}">
+          <img class="home-film-image" src="https://image.tmdb.org/t/p/original/${
+            movie.poster_path
+          }" alt="${movie.title}">
           <div class="home-film-details">
             <h2 class="home-film-title">${movie.title}</h2>
             <p class="home-film-info">
