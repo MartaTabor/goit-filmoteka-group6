@@ -90,7 +90,7 @@ export function locStorage(film) {
     infoRemoveFromQueue();
   }
 
-  // --------------------------button Trailer
+  // --------------------------Trailer ----------------------------------------
 
   const apiKey = 'c2f18aa0c4ee94c87f87834077fd721a';
 
@@ -98,14 +98,18 @@ export function locStorage(film) {
 
   trailerButton.addEventListener('click', async () => {
     const movieId = film.data.id;
-
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`,
     );
     const data = await response.json();
 
-    const trailerKey = data.results[0].key;
+    if (data.results.length === 0) {
+      // Jeśli nie ma dostępnego trailera
+      Notiflix.Notify.info(`The movie: "${film.data.title}" does not have a trailer`);
+    } else {
+      const trailerKey = data.results[0].key;
 
-    window.open(`https://www.youtube.com/watch?v=${trailerKey}`);
+      window.open(`https://www.youtube.com/watch?v=${trailerKey}`);
+    }
   });
 }
