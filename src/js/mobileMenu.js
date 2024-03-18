@@ -7,10 +7,8 @@ const navBottomLi = document.querySelectorAll('.nav-bottom-li');
 const navBtns = document.querySelectorAll('.list li a');
 const signInBtn = document.querySelector('.mobile-sing-in');
 const signUpBtn = document.querySelector('.mobile-sing-up');
-
 const modalRegLog = document.querySelector('.log-reg');
 const logBackdrop = document.querySelector('.log-window-backdrop');
-
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
 const navElements = document.querySelectorAll('.mobile-nav');
@@ -44,45 +42,48 @@ const isHidden = () => {
   });
 };
 
-window.addEventListener('scroll', isVisible);
-window.addEventListener('resize', isVisible);
-
-isVisible();
-
-openBtn.addEventListener('click', () => {
-  navElements.forEach(navEl => navEl.classList.add('mobile-visible'));
-});
-
-closeBtn.addEventListener('click', () => {
-  navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
-});
-
-navLibrary.addEventListener('click', e => {
-  e.preventDefault();
-  isHidden();
-});
-
-signInBtn.onclick = function (e) {
-  e.preventDefault();
-  modalRegLog.style.display = 'block';
-  logBackdrop.style.display = 'block';
-};
-
-signUpBtn.onclick = function (e) {
-  e.preventDefault();
-  modalRegLog.style.display = 'block';
-  logBackdrop.style.display = 'block';
-  modalRegLog.classList.add('right-panel-active');
-};
-
-function handleButtonClick(e) {
+const handleButtonClick = e => {
   const buttonRect = e.target.getBoundingClientRect();
   const x = buttonRect.left + buttonRect.width / 2;
   const y = buttonRect.top + buttonRect.height / 2;
 
   startParticleAnimation(e, x, y);
-}
+};
 
-navBtns.forEach(btn => {
-  btn.addEventListener('click', handleButtonClick);
-});
+const handleClickEvents = () => {
+  window.addEventListener('scroll', isVisible);
+  window.addEventListener('resize', isVisible);
+  isVisible();
+
+  openBtn.addEventListener('click', () => {
+    navElements.forEach(navEl => navEl.classList.add('mobile-visible'));
+  });
+
+  closeBtn.addEventListener('click', () => {
+    navElements.forEach(navEl => navEl.classList.remove('mobile-visible'));
+  });
+
+  navLibrary.addEventListener('click', e => {
+    e.preventDefault();
+    isHidden();
+  });
+
+  signInBtn.onclick = function (e) {
+    e.preventDefault();
+    modalRegLog.style.display = 'block';
+    logBackdrop.style.display = 'block';
+  };
+
+  signUpBtn.onclick = function (e) {
+    e.preventDefault();
+    modalRegLog.style.display = 'block';
+    logBackdrop.style.display = 'block';
+    modalRegLog.classList.add('right-panel-active');
+  };
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', handleButtonClick);
+  });
+};
+
+handleClickEvents();

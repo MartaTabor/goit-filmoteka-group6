@@ -17,6 +17,7 @@ const logWindowFormBgc = document.querySelectorAll('.log-reg form');
 const logWindowA = document.querySelectorAll('.a-social-log-window');
 
 console.log(modalCloseBtn);
+
 // Style Dark Mode
 const darkMode = () => {
   toggleIcon.children[0].textContent = 'Dark Mode';
