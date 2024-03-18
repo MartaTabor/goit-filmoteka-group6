@@ -169,6 +169,10 @@
   background-image: url(../image/mariusz-fit.jpg);
 }
 
+.student-picture_mateusz {
+  background-image: url(../image/mateusz-dobosz.jpg);
+}
+
 .student-picture_placeholder {
   background-image: url(../image/placeholder.png);
 }
