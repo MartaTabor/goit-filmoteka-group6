@@ -100,11 +100,13 @@ logRegBtn.onclick = function () {
 logRegCloseBtn.onclick = function () {
   modalRegLog.style.display = 'none';
   logBackdrop.style.display = 'none';
+  modalRegLog.classList.remove('right-panel-active');
 };
 
 window.onclick = function (event) {
   if (event.target === logBackdrop) {
     modalRegLog.style.display = 'none';
     logBackdrop.style.display = 'none';
+    modalRegLog.classList.remove('right-panel-active');
   }
 };

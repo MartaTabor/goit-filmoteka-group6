@@ -11,6 +11,9 @@ const mobileNavWhite = document.querySelector('.mobile-nav-white');
 const mobileNavBlack = document.querySelector('.mobile-nav-black');
 const modalCloseBtn = document.querySelectorAll('.close-button g line');
 const mobileCloseBtn = document.querySelector('.mobile-nav-close-btn');
+const logWindowBgc = document.querySelector('.log-reg');
+const logWindowFormBgc = document.querySelectorAll('.log-reg form');
+const logWindowA = document.querySelectorAll('.a-social-log-window');
 
 console.log(modalCloseBtn);
 // Style Dark Mode
@@ -24,6 +27,14 @@ const darkMode = () => {
   mobileNavWhite.style.backgroundColor = '#0e171e';
   mobileNavBlack.style.backgroundColor = '#fff';
   mobileCloseBtn.style.color = '#fff';
+  logWindowBgc.style.backgroundColor = '#0e171e';
+
+  logWindowA.forEach(a => {
+    a.style.color = '#aaa';
+  });
+  logWindowFormBgc.forEach(form => {
+    form.style.backgroundColor = '#0e171e';
+  });
 
   modalCloseBtn.forEach(btn => {
     btn.style.stroke = '#fff';
@@ -53,6 +64,13 @@ const lightMode = () => {
   mobileNavWhite.style.backgroundColor = '#fff';
   mobileNavBlack.style.backgroundColor = '#0e171e';
   mobileCloseBtn.style.color = '#000';
+  logWindowBgc.style.backgroundColor = '#fff';
+  logWindowA.forEach(a => {
+    a.style.color = '#333';
+  });
+  logWindowFormBgc.forEach(form => {
+    form.style.backgroundColor = '#fff';
+  });
 
   modalCloseBtn.forEach(btn => {
     btn.style.stroke = '#000';
