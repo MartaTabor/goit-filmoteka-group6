@@ -26,6 +26,11 @@
 }
 
 /* Modal */
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -37,6 +42,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 /*  Button */
@@ -111,7 +117,7 @@
 
 .team-member:hover {
   color: #ff6b08;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .team-member-function {
@@ -147,6 +153,22 @@
   background-image: url(../image/szymon_paluch.jpg);
 }
 
+.student-picture_michalg {
+  background-image: url(../image/michal-gornik.jpg);
+}
+
+.student-picture_wiola {
+  background-image: url(../image/wiola-domanska.jpg);
+}
+
+.student-picture_monika {
+  background-image: url(../image/monika-lis.jpg);
+}
+
+.student-picture_mariusz {
+  background-image: url(../image/mariusz-fit.jpg);
+}
+
 .student-picture_placeholder {
   background-image: url(../image/placeholder.png);
 }
@@ -158,7 +180,7 @@
 
   .student-list li {
     margin-right: 0;
- 
+
     text-align: center;
     flex: 0 0 100%;
     max-width: 100%;
@@ -188,5 +210,4 @@
     flex-direction: column;
     align-items: center;
   }
-
 }
