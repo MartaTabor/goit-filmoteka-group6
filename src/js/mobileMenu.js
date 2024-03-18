@@ -5,6 +5,11 @@ const libraryNavList = document.querySelector('.library-list');
 const navLibrary = document.querySelector('.nav-library');
 const navBottomLi = document.querySelectorAll('.nav-bottom-li');
 const navBtns = document.querySelectorAll('.list li a');
+const signInBtn = document.querySelector('.mobile-sing-in');
+const signUpBtn = document.querySelector('.mobile-sing-up');
+
+const modalRegLog = document.querySelector('.log-reg');
+const logBackdrop = document.querySelector('.log-window-backdrop');
 
 const openBtn = document.querySelector('.mobile-nav-open-btn');
 const closeBtn = document.querySelector('.mobile-nav-close-btn');
@@ -56,17 +61,27 @@ navLibrary.addEventListener('click', e => {
   e.preventDefault();
   isHidden();
 });
+
+signInBtn.onclick = function (e) {
+  e.preventDefault();
+  modalRegLog.style.display = 'block';
+  logBackdrop.style.display = 'block';
+};
+
+signUpBtn.onclick = function (e) {
+  e.preventDefault();
+  modalRegLog.style.display = 'block';
+  logBackdrop.style.display = 'block';
+};
+
 function handleButtonClick(e) {
-  // Pobierz współrzędne przycisku
   const buttonRect = e.target.getBoundingClientRect();
   const x = buttonRect.left + buttonRect.width / 2;
   const y = buttonRect.top + buttonRect.height / 2;
 
-  // Wywołaj funkcję startParticleAnimation z odpowiednimi współrzędnymi
   startParticleAnimation(e, x, y);
 }
 
-// Dodaj event listenery na kliknięcie dla każdego przycisku nawigacyjnego
 navBtns.forEach(btn => {
   btn.addEventListener('click', handleButtonClick);
 });
