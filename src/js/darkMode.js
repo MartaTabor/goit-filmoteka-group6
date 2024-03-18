@@ -4,11 +4,12 @@ const modalSec = document.querySelector('.film-details-modal-window');
 const footerModal = document.querySelector('.modal-content');
 const footerSec = document.querySelector('.footer_container');
 const paginationBtns = document.querySelectorAll('.pagination-button');
+const paginationArrow = document.querySelectorAll('.arrows');
 const paginationSvg = document.querySelectorAll('.pagination-svg');
 const mobileMenuA = document.querySelectorAll('.list li a');
 const mobileNavWhite = document.querySelector('.mobile-nav-white');
 const mobileNavBlack = document.querySelector('.mobile-nav-black');
-const modalCloseBtn = document.querySelectorAll('.close-button');
+const modalCloseBtn = document.querySelectorAll('.close-button g line');
 const mobileCloseBtn = document.querySelector('.mobile-nav-close-btn');
 
 // Style Dark Mode
@@ -21,7 +22,13 @@ const darkMode = () => {
   footerModal.style.backgroundColor = '#0e171e';
   mobileNavWhite.style.backgroundColor = '#0e171e';
   mobileNavBlack.style.backgroundColor = '#fff';
-  mobileCloseBtn.style.color = '#fff';
+
+  mobileCloseBtn.style.stroke = '#fff';
+
+  paginationArrow.forEach(arrow => {
+    arrow.style.fill = '#fff';
+    arrow.style.backgroundColor = '#1b2c39';
+  });
 
   mobileMenuA.forEach(link => {
     link.style.color = '#fff';
@@ -41,7 +48,14 @@ const lightMode = () => {
   footerModal.style.backgroundColor = '#fff';
   mobileNavWhite.style.backgroundColor = '#fff';
   mobileNavBlack.style.backgroundColor = '#0e171e';
-  mobileCloseBtn.style.color = '#000';
+  mobileCloseBtn.style.stroke = '#000';
+
+  mobileCloseBtn.style.stroke = '#000';
+
+  paginationArrow.forEach(arrow => {
+    arrow.style.fill = '#000';
+    arrow.style.backgroundColor = '#f7f7f7';
+  });
 
   mobileMenuA.forEach(link => {
     link.style.color = '#0e171e';
