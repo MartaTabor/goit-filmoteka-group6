@@ -2,6 +2,7 @@ const toggleSwitch = document.querySelector('input[type="checkbox"]');
 const toggleIcon = document.getElementById('toggle-icon');
 const modalSec = document.querySelector('.film-details-modal-window');
 const footerModal = document.querySelector('.modal-content');
+const footerModalP = document.querySelectorAll('.team-member');
 const footerSec = document.querySelector('.footer_container');
 const paginationBtns = document.querySelectorAll('.pagination-button');
 const paginationArrow = document.querySelectorAll('.arrows');
@@ -29,6 +30,9 @@ const darkMode = () => {
   mobileCloseBtn.style.color = '#fff';
   logWindowBgc.style.backgroundColor = '#0e171e';
 
+  footerModalP.forEach(p => {
+    p.style.color = '#fff';
+  });
   logWindowA.forEach(a => {
     a.style.color = '#aaa';
   });
@@ -65,6 +69,11 @@ const lightMode = () => {
   mobileNavBlack.style.backgroundColor = '#0e171e';
   mobileCloseBtn.style.color = '#000';
   logWindowBgc.style.backgroundColor = '#fff';
+
+  footerModalP.forEach(p => {
+    p.style.color = '#fff';
+  });
+
   logWindowA.forEach(a => {
     a.style.color = '#333';
   });
