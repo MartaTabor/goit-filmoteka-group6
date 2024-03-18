@@ -86,7 +86,8 @@ onAuthStateChanged(auth, user => {
 
 const logRegBtn = document.querySelector('.icon-user');
 const modalRegLog = document.querySelector('.log-reg');
-const span = document.getElementsByClassName('close')[0];
+const logRegCloseBtn = document.querySelector('.log-window-close-btn');
+const logBackdrop = document.querySelector('.log-window-backdrop');
 
 logRegBtn.addEventListener('click', () => {
   modalRegLog.classList.toggle('show-log-reg-window');
@@ -94,14 +95,16 @@ logRegBtn.addEventListener('click', () => {
 
 logRegBtn.onclick = function () {
   modalRegLog.style.display = 'block';
+  logBackdrop.style.display = 'block';
 };
-
-span.onclick = function () {
+logRegCloseBtn.onclick = function () {
   modalRegLog.style.display = 'none';
+  logBackdrop.style.display = 'none';
 };
 
 window.onclick = function (event) {
-  if (event.target == modalRegLog) {
+  if (event.target === logBackdrop) {
     modalRegLog.style.display = 'none';
+    logBackdrop.style.display = 'none';
   }
 };
