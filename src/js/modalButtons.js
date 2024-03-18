@@ -55,7 +55,6 @@ export function locStorage(film) {
   }
   // Funkcja dodawania do localstorage 'Watched'
   function onWatchedClick() {
-    console.log(film);
     if (!moviesWatched.find(item => item.id === film.data.id)) {
       moviesWatched.push(film.data);
       localStorage.setItem('movies-watched', JSON.stringify(moviesWatched));
@@ -90,4 +89,23 @@ export function locStorage(film) {
     addQueueRef.textContent = `${res ? 'remove from' : 'add to'} queue `;
     infoRemoveFromQueue();
   }
+
+  // --------------------------button Trailer
+
+  const apiKey = 'c2f18aa0c4ee94c87f87834077fd721a';
+
+  const trailerButton = document.querySelector('.btn-youtube');
+
+  trailerButton.addEventListener('click', async () => {
+    const movieId = film.data.id;
+
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`,
+    );
+    const data = await response.json();
+
+    const trailerKey = data.results[0].key;
+
+    window.open(`https://www.youtube.com/watch?v=${trailerKey}`);
+  });
 }
