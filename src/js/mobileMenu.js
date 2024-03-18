@@ -72,6 +72,7 @@ signUpBtn.onclick = function (e) {
   e.preventDefault();
   modalRegLog.style.display = 'block';
   logBackdrop.style.display = 'block';
+  modalRegLog.classList.add('right-panel-active');
 };
 
 function handleButtonClick(e) {
