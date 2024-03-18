@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-* {
-  box-sizing: border-box;
-}
-
 .body-log-window {
   display: flex;
   font-family: 'Montserrat', sans-serif;
@@ -47,10 +43,6 @@
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
-}
-
-.span-log-window {
-  font-size: 12px;
 }
 
 .a-social-log-window {
@@ -146,11 +138,11 @@
   z-index: 1;
 }
 
-.container-log-window.right-panel-active-log-window .sign-up-container-log-window {
+.container-log-window.right-panel-active .sign-up-container-log-window {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
-  animation: show-log-window 0.6s;
+  animation: show 0.6s;
 }
 @keyframes show {
   0%,
@@ -242,18 +234,4 @@
   margin: 0 5px;
   height: 40px;
   width: 40px;
-}
-
-.sign-in-container-log-window {
-  left: 0;
-  width: 50%;
-  z-index: 2;
-}
-
-.container-log-window.right-panel-active .sign-in-container-log-window {
-  transform: translateX(100%);
-}
-
-.container-log-window.right-panel-active .overlay-container-log-window {
-  transform: translateX(-100%);
 }
