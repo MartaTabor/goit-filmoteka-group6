@@ -12,6 +12,7 @@ const mobileNavBlack = document.querySelector('.mobile-nav-black');
 const modalCloseBtn = document.querySelectorAll('.close-button g line');
 const mobileCloseBtn = document.querySelector('.mobile-nav-close-btn');
 
+console.log(modalCloseBtn);
 // Style Dark Mode
 const darkMode = () => {
   toggleIcon.children[0].textContent = 'Dark Mode';
@@ -22,8 +23,11 @@ const darkMode = () => {
   footerModal.style.backgroundColor = '#0e171e';
   mobileNavWhite.style.backgroundColor = '#0e171e';
   mobileNavBlack.style.backgroundColor = '#fff';
+  mobileCloseBtn.style.color = '#fff';
 
-  mobileCloseBtn.style.stroke = '#fff';
+  modalCloseBtn.forEach(btn => {
+    btn.style.stroke = '#fff';
+  });
 
   paginationArrow.forEach(arrow => {
     arrow.style.fill = '#fff';
@@ -48,9 +52,11 @@ const lightMode = () => {
   footerModal.style.backgroundColor = '#fff';
   mobileNavWhite.style.backgroundColor = '#fff';
   mobileNavBlack.style.backgroundColor = '#0e171e';
-  mobileCloseBtn.style.stroke = '#000';
+  mobileCloseBtn.style.color = '#000';
 
-  mobileCloseBtn.style.stroke = '#000';
+  modalCloseBtn.forEach(btn => {
+    btn.style.stroke = '#000';
+  });
 
   paginationArrow.forEach(arrow => {
     arrow.style.fill = '#000';
