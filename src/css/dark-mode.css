@@ -57,7 +57,7 @@ body {
   display: inline-block;
   height: 34px;
   position: relative;
-  width: 60px;
+  min-width: 60px;
 }
 
 .theme-switch input {
