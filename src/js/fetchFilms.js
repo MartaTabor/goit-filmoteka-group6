@@ -18,18 +18,18 @@ export async function fetchFilmsByQuery(query, page) {
         query: query,
         include_adult: 'false',
         language: 'en-US',
-        page: `${page}`
+        page: `${page}`,
       },
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjRiYzVmYTA0ZTcwZWUwNmI1YmZjZmZkZDAwMjhmZiIsInN1YiI6IjY1ZjFiYzIwZDY0YWMyMDBjYTVkMWU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kSA66Srxuh9huCM-91QWv-1PAFYBxqjt-fFzzJb4bmg'
-      }
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjRiYzVmYTA0ZTcwZWUwNmI1YmZjZmZkZDAwMjhmZiIsInN1YiI6IjY1ZjFiYzIwZDY0YWMyMDBjYTVkMWU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kSA66Srxuh9huCM-91QWv-1PAFYBxqjt-fFzzJb4bmg',
+      },
     };
 
     const response = await axios.request(options);
-    console.log(`Szukamy: ${query} na stronie ${page}`);
+    // console.log(`Szukamy: ${query} na stronie ${page}`);
     return response;
-
   } catch (error) {
     console.error('Error fetching data:', error);
   }

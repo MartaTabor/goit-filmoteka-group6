@@ -16,7 +16,7 @@ const logWindowBgc = document.querySelector('.log-reg');
 const logWindowFormBgc = document.querySelectorAll('.log-reg form');
 const logWindowA = document.querySelectorAll('.a-social-log-window');
 
-console.log(modalCloseBtn);
+// console.log(modalCloseBtn);
 
 // Style Dark Mode
 const darkMode = () => {

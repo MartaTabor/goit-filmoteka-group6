@@ -126,7 +126,7 @@ function handleButtonClick(page) {
   currPage = page;
   query = searchForm.elements.searchQuery.value.trim().split(' ').join(`%20`);
   if (query === '') {
-    console.log(`Paginacja po popular films pade: ${page}`);
+    // console.log(`Paginacja po popular films pade: ${page}`);
     fetchDataCallback(page);
   } else {
     console.log(`Paginacja po search films pade: ${page}`);
